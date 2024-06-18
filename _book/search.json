@@ -1,0 +1,92 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Tomogrphy",
+    "section": "",
+    "text": "Preface\n토모그래피 데이터 처리에 관해 정리한다.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "src/data_processing.html",
+    "href": "src/data_processing.html",
+    "title": "2  중성자 토모그래피 데이터 처리",
+    "section": "",
+    "text": "2.1 데이터셋\n일반적으로 중성자 토모그래피는 가로, 세로 각각 천 픽셀 이상에 대한 중성자 투과 영상을 회전각에 따라 수백장 이상을 찍는다. 이것을 \\(I_\\theta [x, y]\\) 라고 표기하기로 하자. 또한 백그라운드 처리를 위해 dark current 영상 수차례 찍는데 이것을 \\(I^{(i)}_D [x, y]\\) 라고 하자. 데이터 규격화를 위해 샘플이 없느 상태에서 중성자를 입사시켜 찍는데 이것을 white field 라고 하며 역시 수차례 찍는데 이것을 \\(I^{(j)}_W[x, y]\\) 라고 하자. 일반적으로 중성자 영상은 dark current 와 white field 를 한번이 아닌 수회 측정하며 이상이 있는 데이터는 버리고 이상이 없는 dark current 데이터와 white field 데이터를 선택하여 픽셀별 평균을 내어 사용한다. 이 평균화된 값을 각각 \\(I_D [x, y]\\) 와 \\(I_W[x, y]\\) 라고 하자.\n영상의 각 픽셀은 2바이트 부호 없는 정수 (UInt16) 타입으로 측정된 중성자 갯수가 저장되며 따라서 0 에서 216-1 = 65535 까지의 중성자 측정 개수를 표현 할 수 있다.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>중성자 토모그래피 데이터 처리</span>"
+    ]
+  },
+  {
+    "objectID": "src/data_processing.html#개요",
+    "href": "src/data_processing.html#개요",
+    "title": "2  데이터 처리",
+    "section": "",
+    "text": "Rivers, Mark. 1988. “Tutorial Introduction to x-Ray Computed Microtomography Data Processing.” https://www.mcs.anl.gov/research/projects/X-ray-cmt/rivers/tutorial.html.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>데이터 처리</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "4  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Rivers, Mark. 1988. “Tutorial Introduction to x-Ray Computed\nMicrotomography Data Processing.” https://www.mcs.anl.gov/research/projects/X-ray-cmt/rivers/tutorial.html.",
+    "crumbs": [
+      "References"
+    ]
+  },
+  {
+    "objectID": "src/data_processing.html#데이터셋",
+    "href": "src/data_processing.html#데이터셋",
+    "title": "2  중성자 토모그래피 데이터 처리",
+    "section": "",
+    "text": "Rivers, Mark. 1988. “Tutorial Introduction to x-Ray Computed Microtomography Data Processing.” https://www.mcs.anl.gov/research/projects/X-ray-cmt/rivers/tutorial.html.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>중성자 토모그래피 데이터 처리</span>"
+    ]
+  },
+  {
+    "objectID": "src/data_processing.html#잡음-제거",
+    "href": "src/data_processing.html#잡음-제거",
+    "title": "2  중성자 토모그래피 데이터 처리",
+    "section": "2.2 잡음 제거",
+    "text": "2.2 잡음 제거\n보통 Salt & pepper 타입의 노이즈가 많이 발생하며 이를 제거하기 위해 이미지에 중간값 필터링을 수행한다.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>중성자 토모그래피 데이터 처리</span>"
+    ]
+  },
+  {
+    "objectID": "src/data_processing.html#영역-선택",
+    "href": "src/data_processing.html#영역-선택",
+    "title": "2  중성자 토모그래피 데이터 처리",
+    "section": "2.3 영역 선택",
+    "text": "2.3 영역 선택\n\n\n\n\nRivers, Mark. 1988. “Tutorial Introduction to x-Ray Computed Microtomography Data Processing.” https://www.mcs.anl.gov/research/projects/X-ray-cmt/rivers/tutorial.html.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>중성자 토모그래피 데이터 처리</span>"
+    ]
+  }
+]

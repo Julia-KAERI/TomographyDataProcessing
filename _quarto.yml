@@ -1,0 +1,29 @@
+project:
+  type: book
+
+book:
+  title: "Tomogrphy"
+  author: "Ji-Yong So"
+  date: "6/12/2024"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - src/data_processing.qmd
+    - src/ring_artifact.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    fontsize: 0.9em
+    toc: true
+    #html-math-method: mathml #to be changed to mathjax
+  # pdf:
+  #   documentclass: scrreprt
+
+
+
+
