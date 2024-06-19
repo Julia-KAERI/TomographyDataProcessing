@@ -9,6 +9,7 @@ book:
     - index.qmd
     - intro.qmd
     - src/data_processing.qmd
+    - src/centering.qmd
     - src/ring_artifact.qmd
     - summary.qmd
     - references.qmd

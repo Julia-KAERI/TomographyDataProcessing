@@ -16,5 +16,8 @@
   },
   "references.qmd": {
     "references.html": "6734a3b6"
+  },
+  "src/centering.qmd": {
+    "centering.html": "7e399350"
   }
 }

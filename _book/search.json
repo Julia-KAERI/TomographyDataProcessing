@@ -24,67 +24,27 @@
     "href": "src/data_processing.html",
     "title": "2  중성자 토모그래피 데이터 처리",
     "section": "",
-    "text": "2.1 데이터셋\n일반적으로 중성자 토모그래피 데이터는 다음 세가지 종류의 중성자 영상 데이터셋로 구성된다.\n영상의 각 픽셀은 2바이트 부호 없는 정수 (UInt16) 타입으로 측정된 중성자 갯수가 저장되며 따라서 0 에서 216-1 = 65535 까지의 중성자 측정 개수를 표현 할 수 있다.\n일반적으로 회전축은 \\(y\\) 방향과 평행하거나 매우 가깝다.",
+    "text": "2.1 토모그래피 실험 세팅",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>중성자 토모그래피 데이터 처리</span>"
     ]
   },
   {
-    "objectID": "src/data_processing.html#개요",
-    "href": "src/data_processing.html#개요",
-    "title": "2  데이터 처리",
+    "objectID": "src/data_processing.html#토모그래피-실험-세팅",
+    "href": "src/data_processing.html#토모그래피-실험-세팅",
+    "title": "2  중성자 토모그래피 데이터 처리",
     "section": "",
-    "text": "Rivers, Mark. 1988. “Tutorial Introduction to x-Ray Computed Microtomography Data Processing.” https://www.mcs.anl.gov/research/projects/X-ray-cmt/rivers/tutorial.html.",
+    "text": "Figure 2.1: 토모그래피 실험 세팅 (From Titarenko, Withers, and Yagola (2010))\n\n\n\n\n중성자 영상은 \\(xz\\) 평면상에서 촬영된다.\n회전각은 \\(\\theta\\) 이다.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>데이터 처리</span>"
-    ]
-  },
-  {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "4  Summary",
-    "section": "",
-    "text": "In summary, this book has no content whatsoever.",
-    "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Summary</span>"
-    ]
-  },
-  {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "Rivers, Mark. 1988. “Tutorial Introduction to x-Ray Computed\nMicrotomography Data Processing.” https://www.mcs.anl.gov/research/projects/X-ray-cmt/rivers/tutorial.html.",
-    "crumbs": [
-      "References"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>중성자 토모그래피 데이터 처리</span>"
     ]
   },
   {
     "objectID": "src/data_processing.html#데이터셋",
     "href": "src/data_processing.html#데이터셋",
     "title": "2  중성자 토모그래피 데이터 처리",
-    "section": "",
-    "text": "샘플 영상 : 0 도에서 180도 혹은 360 까지 일정한 회전각으로 샘플을 회전시켜가며 찍은 영상. 이것을 \\(I^r_\\theta [x, y]\\) 라고 표기하기로 하자.\nDark current 영상 : 백그라운드 처리를 위해 중성자를 막고 측정한 영상. 같은 설정으로 수차례 측정한다. 이것을 \\(I^{(i)}_D [x, y]\\) 라고 하자.\nWhite field 영상 : 데이터 규격화를 위해 샘플이 없는 상태에서 중성자를 입사시켜 수차례 촬영하며 이것을 \\(I^{(j)}_W[x, y]\\) 라고 하자.",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>중성자 토모그래피 데이터 처리</span>"
-    ]
-  },
-  {
-    "objectID": "src/data_processing.html#잡음-제거",
-    "href": "src/data_processing.html#잡음-제거",
-    "title": "2  중성자 토모그래피 데이터 처리",
-    "section": "2.2 잡음 제거",
-    "text": "2.2 잡음 제거\n보통 Salt & pepper 타입의 노이즈가 많이 발생하며 이를 제거하기 위해 이미지에 중간값 필터링을 수행한다.",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>중성자 토모그래피 데이터 처리</span>"
-    ]
-  },
-  {
-    "objectID": "src/data_processing.html#영역-선택",
-    "href": "src/data_processing.html#영역-선택",
-    "title": "2  중성자 토모그래피 데이터 처리",
-    "section": "2.3 영역 선택",
-    "text": "2.3 영역 선택\n\n\n\n\nRivers, Mark. 1988. “Tutorial Introduction to x-Ray Computed Microtomography Data Processing.” https://www.mcs.anl.gov/research/projects/X-ray-cmt/rivers/tutorial.html.",
+    "section": "2.2 데이터셋",
+    "text": "2.2 데이터셋\n일반적으로 중성자 토모그래피 데이터는 다음 세가지 종류의 중성자 영상 데이터셋로 구성된다.\n\n샘플 영상 : 0 도에서 180도 혹은 360 까지 일정한 회전각으로 샘플을 회전시켜가며 찍은 영상. 이것을 \\(I^r_\\theta [x, z]\\) 라고 표기하기로 하자.\nDark current 영상 : 백그라운드 처리를 위해 중성자를 막고 측정한 영상. 같은 설정으로 수차례 측정한다. 이것을 \\(I^{(i)}_D [x, z]\\) 라고 하자.\nWhite field 영상 : 데이터 규격화를 위해 샘플이 없는 상태에서 중성자를 입사시켜 수차례 촬영하며 이것을 \\(I^{(j)}_W[x, z]\\) 라고 하자.\n\n영상의 각 픽셀은 2바이트 부호 없는 정수 (UInt16) 타입으로 측정된 중성자 갯수가 저장되며 따라서 0 에서 216-1 = 65535 까지의 중성자 측정 개수를 표현 할 수 있다.\n일반적으로 회전축은 \\(y\\) 방향과 평행하거나 매우 가깝다.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>중성자 토모그래피 데이터 처리</span>"
     ]
@@ -93,10 +53,70 @@
     "objectID": "src/data_processing.html#데이터-처리",
     "href": "src/data_processing.html#데이터-처리",
     "title": "2  중성자 토모그래피 데이터 처리",
-    "section": "2.2 데이터 처리",
-    "text": "2.2 데이터 처리\n\n2.2.1 영역 선택\n보통 두가지 영역을 선택한다.\n\n관심 영역 (Region of interest) : 측정된 전체 영역은 일반적으로 시료가 찍힌 영역보다 크다. 그리고 데이터 처리는 처리에 사용되는 영역이 늘어날 수록 시간이 오래 걸린다. 따라서 전체 영역가운데 reconstruction 에 사용될 영역을 선택한다. 이 선택된 영역에는 모든 회전각에서의 시료의 영상이 포함되어야 한다.\n정규화 영역 (Region of normalization) : 카메라에서 측정된 중성자의 갯수는 중성자 선속(단위 시간당 중성자 갯수) 와 측정 시간의 곱에 비례한다. 여러 이유로 중성자 선속이 각 영상마다 다를 수 있으며, 측정 시간도 다소 차이가 날 수 있다. 이를 보정해 주기 위해 관심 영역이 아닌 모든 회전각에서 시료의 영향을 받지 않는 부분을 정규화 영역으로 선택한다. 시료의 영향을 받지 않으므로 이 영역에서의 중성자 측정 갯수는 측정 시간동안 입사된 중성자의 총량에 비례할 것이다.\n\n따라서 중성자 토모그래피를 측정하는데는 전체 영상을 시료로 꽉 채우기 보다는 일정 부분 빈 공간을 두는 것이 좋다. 그래야지만 괜찮은 정규화 영역을 선택 할 수 있다.\n영역 선택을 할 때 보통은 회전각 \\(0^\\circ\\) 와 \\(180^\\circ\\) 의 영상을 겹쳐놓거나, 필요에 따라 여려 영상을 겹쳐 놓고 영역을 선택한다. 아래 사진은 nTomo.jl 에서 영역을 선택한 것이다. 붉은 사각형이 관심 영역의 경계이며, 노란 사각형이 정규화 영역의 경계이다.\n\n\n\n영역 선택\n\n\n\n\n\n2.2.2 파일 읽기\n영상 파일은 tif 와 같은 이미지에 대한 비손실 압축 포맷을 사용하거나, 다른 과학적인 데이터 포맷을 사용한다. 데이터셋을 읽고 잡음을 제거한 후 영역을 선택하면 다음의 데이터가 남는다.\n\n샘플 영상 : 샘플에 대한 원본 영상 \\(I^r_\\theta [x,\\,y]\\) 에서 관심 영역을 잘라낸 \\(I^c_\\theta[x,\\,y]\\) 와 각 회전각에 대한 정규화 영역 전체의 평균값인 \\(N_\\theta[x,\\,y]\\) 값.\nDark current 영상 : Dark current 원본의 복수의 영상에서 관심 영역만을 잘라낸 후 픽셀당 평균을 낸 \\(I^c_D[x,\\,y]\\) 과 정규화 영역만을 잘라낸 후 픽셀당 평균을 낸 \\(N_D[x,\\,y]\\)\nWhite field 영상 : 역시 white field 원본의 복수의 영상에서 관심 영역만을 잘라낸 후 픽셀당 평균을 낸 \\(I^c_W[x,\\,y]\\) 과 정규화 영역만을 잘라낸 후 픽셀당 평균을 낸 \\(N_W[x,\\,y]\\)\n\n\n\n\n2.2.3 잡음 제거\n보통 Salt & pepper 타입의 노이즈가 많이 발생하며 이를 제거하기 위해 이미지에 중간값 필터링을 수행한다. 노이즈가 심할 경우 중간값 필터의 크기를 크게 하거나 작은 필터로 여러번 수행한다. \\(I^r_\\theta [x,\\,y]\\), \\(N_\\theta[x,\\,y]\\), \\(I^c_D[x,\\,y]\\), \\(N_D[x,\\,y]\\), \\(I^c_W[x,\\,y]\\), \\(N_W[x,\\,y]\\) 에 각각 잡음 제거 필터링을 수행한다. (데이터 셋을 나타내는 기호는 바꾸지 않겠다.)\n\n\n\n2.2.4 샘플 영상 정규화\n아래와 같이 \\(I_\\theta[x,\\,y],\\, I_D[x,\\,y],\\, I_W[x,\\,y]\\) 를 계산한다.\n\\[\n\\begin{aligned}\nI_\\theta [x,\\,y] & = I^c_\\theta[x,\\,y] /\\left(\\sum_{x,\\,y} N_\\theta[x,\\,y]\\right),\\qquad ; \\theta = 0,\\ldots \\\\\nI_D[x,\\,y] &= I^c_D[x,\\,y] /\\left(\\sum_{x,\\,y} N_D[x,\\,y]\\right),\\\\\nI_W[x,\\,y] &= I^c_W[x,\\,y] /\\left(\\sum_{x,\\,y} N_W[x,\\,y]\\right),\n\\end{aligned}\n\\]\n\n\n\n2.2.5 시노그램\n고정된 \\(y\\) 에 대해 \\(\\theta,\\,x\\) 값을 조합하여 sinogram 을 얻는다. \\[\nS_y [\\theta, x]= - \\log \\left(\\dfrac{I_\\theta[x,\\,y] - I_D[x,\\,y]}{I_W[x,\\,y]-I_D[x,\\,y]}\\right)\n\\]\n\n\n2.2.6 회전중심 찾기\n\n\n\n2.2.7 링/스트립 아티팩트 제거\nVo, Atwood, and Drakopoulos (2018) 에 따르면 링/스트립 아티팩트 제거에는 크게 두가지 범주가 있다.\n\nReal space method\n\nnormalization based mothod (Rivers (1988))\nregularization based method (Titarenko, Withers, and Yagola (2010))\n\n푸리에 변환 기반 method\n\nFFT based method (Raven (1998))\nwavelet-FFT-based method (Münch et al. (2009))\n\n\n이 방법들은 모두 두가지 단점이 존재한다.\n\n시노그램에 high frequency edgy 가 있을 경우 추가적인 strip 아티팩트가 발생한다.\n시노그램을 과도하게 수정할 경우 회전 중심 근처에 void 가 생길 수 있다(void-center artifacts).\n\n\n\n\n\nMünch, Beat, Pavel Trtik, Federica Marone, and Marco Stampanoni. 2009. “Stripe and Ring Artifact Removal with Combined Wavelet — Fourier Filtering.” Opt. Express 17 (10): 8567–91. https://doi.org/10.1364/OE.17.008567.\n\n\nRaven, Carsten. 1998. “Numerical Removal of Ring Artifacts in Microtomography.” Review of Scientific Instruments 69: 2978–80. https://api.semanticscholar.org/CorpusID:53389111.\n\n\nRivers, Mark. 1988. “Tutorial Introduction to x-Ray Computed Microtomography Data Processing.” https://www.mcs.anl.gov/research/projects/X-ray-cmt/rivers/tutorial.html.\n\n\nTitarenko, Sofya, Philip J. Withers, and Anatoly Yagola. 2010. “An Analytical Formula for Ring Artefact Suppression in x-Ray Tomography.” Applied Mathematics Letters 23 (12): 1489–95. https://doi.org/https://doi.org/10.1016/j.aml.2010.08.022.\n\n\nVo, Nghia T., Robert C. Atwood, and Michael Drakopoulos. 2018. “Superior Techniques for Eliminating Ring Artifacts in x-Ray Micro-Tomography.” Opt. Express 26 (22): 28396–412. https://doi.org/10.1364/OE.26.028396.",
+    "section": "2.3 데이터 처리",
+    "text": "2.3 데이터 처리\n\n2.3.1 영역 선택\n보통 두가지 영역을 선택한다.\n\n관심 영역 (Region of interest) : 측정된 전체 영역은 일반적으로 시료가 찍힌 영역보다 크다. 그리고 데이터 처리는 처리에 사용되는 영역이 늘어날 수록 시간이 오래 걸린다. 따라서 전체 영역가운데 reconstruction 에 사용될 영역을 선택한다. 이 선택된 영역에는 모든 회전각에서의 시료의 영상이 포함되어야 한다.\n정규화 영역 (Region of normalization) : 카메라에서 측정된 중성자의 갯수는 중성자 선속(단위 시간당 중성자 갯수) 와 측정 시간의 곱에 비례한다. 여러 이유로 중성자 선속이 각 영상마다 다를 수 있으며, 측정 시간도 다소 차이가 날 수 있다. 이를 보정해 주기 위해 관심 영역이 아닌 모든 회전각에서 시료의 영향을 받지 않는 부분을 정규화 영역으로 선택한다. 시료의 영향을 받지 않으므로 이 영역에서의 중성자 측정 갯수는 측정 시간동안 입사된 중성자의 총량에 비례할 것이다.\n\n따라서 중성자 토모그래피를 측정하는데는 전체 영상을 시료로 꽉 채우기 보다는 일정 부분 빈 공간을 두는 것이 좋다. 그래야지만 괜찮은 정규화 영역을 선택 할 수 있다.\n영역 선택을 할 때 보통은 회전각 \\(0^\\circ\\) 와 \\(180^\\circ\\) 의 영상을 겹쳐놓거나, 필요에 따라 여려 영상을 겹쳐 놓고 영역을 선택한다. 아래 사진은 nTomo.jl 에서 영역을 선택한 것이다. 붉은 사각형이 관심 영역의 경계이며, 노란 사각형이 정규화 영역의 경계이다.\n\n\n\n영역 선택\n\n\n\n\n\n2.3.2 파일 읽기\n영상 파일은 tif 와 같은 이미지에 대한 비손실 압축 포맷을 사용하거나, 다른 과학적인 데이터 포맷을 사용한다. 데이터셋을 읽고 잡음을 제거한 후 영역을 선택하면 다음의 데이터가 남는다.\n\n샘플 영상 : 샘플에 대한 원본 영상 \\(I^r_\\theta [x,\\,z]\\) 에서 관심 영역을 잘라낸 \\(I^c_\\theta[x,\\,z]\\) 와 각 회전각에 대한 정규화 영역 전체의 평균값인 \\(N_\\theta[x,\\,z]\\) 값.\nDark current 영상 : Dark current 원본의 복수의 영상에서 관심 영역만을 잘라낸 후 픽셀당 평균을 낸 \\(I^c_D[x,\\,z]\\) 과 정규화 영역만을 잘라낸 후 픽셀당 평균을 낸 \\(N_D[x,\\,z]\\)\nWhite field 영상 : 역시 white field 원본의 복수의 영상에서 관심 영역만을 잘라낸 후 픽셀당 평균을 낸 \\(I^c_W[x,\\,z]\\) 과 정규화 영역만을 잘라낸 후 픽셀당 평균을 낸 \\(N_W[x,\\,z]\\)\n\n\n\n\n2.3.3 잡음 제거\n보통 Salt & pepper 타입의 노이즈가 많이 발생하며 이를 제거하기 위해 이미지에 중간값 필터링을 수행한다. 노이즈가 심할 경우 중간값 필터의 크기를 크게 하거나 작은 필터로 여러번 수행한다. \\(I^r_\\theta [x,\\,z]\\), \\(N_\\theta[x,\\,z]\\), \\(I^c_D[x,\\,z]\\), \\(N_D[x,\\,z]\\), \\(I^c_W[x,\\,z]\\), \\(N_W[x,\\,z]\\) 에 각각 잡음 제거 필터링을 수행한다. (데이터 셋을 나타내는 기호는 바꾸지 않겠다.)\n\n\n\n2.3.4 샘플 영상 정규화\n아래와 같이 \\(I_\\theta[x,\\,z],\\, I_D[x,\\,z],\\, I_W[x,\\,z]\\) 를 계산한다.\n\\[\n\\begin{aligned}\nI_\\theta [x,\\,z] & = I^c_\\theta[x,\\,z] /\\left(\\sum_{x,\\,y} N_\\theta[x,\\,z]\\right),\\qquad ; \\theta = 0,\\ldots \\\\\nI_D[x,\\,z] &= I^c_D[x,\\,z] /\\left(\\sum_{x,\\,z} N_D[x,\\,z]\\right),\\\\\nI_W[x,\\,z] &= I^c_W[x,\\,z] /\\left(\\sum_{x,\\,z} N_W[x,\\,z]\\right),\n\\end{aligned}\n\\]\n\n\n\n2.3.5 사이노그램\n고정된 \\(y\\) 에 대해 \\(\\theta,\\,x\\) 값을 조합하여 사이노드램(sinogram) 을 얻는다. \\[\nS_z [\\theta, x]= - \\log \\left(\\dfrac{I_\\theta[x,\\,z] - I_D[x,\\,z]}{I_W[x,\\,z]-I_D[x,\\,z]}\\right)\n\\]\n\n\n2.3.6 회전중심 찾기\n\n\n\n2.3.7 링/스트립 아티팩트 제거\nVo, Atwood, and Drakopoulos (2018) 에 따르면 링/스트립 아티팩트 제거에는 크게 두가지 범주가 있다.\n\nReal space method\n\nnormalization based mothod (Rivers (1988))\nregularization based method (Titarenko, Withers, and Yagola (2010))\n\n푸리에 변환 기반 method\n\nFFT based method (Raven (1998))\nwavelet-FFT-based method (Münch et al. (2009))\n\n\n이 방법들은 모두 두가지 단점이 존재한다.\n\n시노그램에 high frequency edgy 가 있을 경우 추가적인 strip 아티팩트가 발생한다.\n시노그램을 과도하게 수정할 경우 회전 중심 근처에 void 가 생길 수 있다(void-center artifacts).\n\n\n\n\n\nMünch, Beat, Pavel Trtik, Federica Marone, and Marco Stampanoni. 2009. “Stripe and Ring Artifact Removal with Combined Wavelet — Fourier Filtering.” Opt. Express 17 (10): 8567–91. https://doi.org/10.1364/OE.17.008567.\n\n\nRaven, Carsten. 1998. “Numerical Removal of Ring Artifacts in Microtomography.” Review of Scientific Instruments 69: 2978–80. https://api.semanticscholar.org/CorpusID:53389111.\n\n\nRivers, Mark. 1988. “Tutorial Introduction to x-Ray Computed Microtomography Data Processing.” https://www.mcs.anl.gov/research/projects/X-ray-cmt/rivers/tutorial.html.\n\n\nTitarenko, Sofya, Philip J. Withers, and Anatoly Yagola. 2010. “An Analytical Formula for Ring Artefact Suppression in x-Ray Tomography.” Applied Mathematics Letters 23 (12): 1489–95. https://doi.org/https://doi.org/10.1016/j.aml.2010.08.022.\n\n\nVo, Nghia T., Robert C. Atwood, and Michael Drakopoulos. 2018. “Superior Techniques for Eliminating Ring Artifacts in x-Ray Micro-Tomography.” Opt. Express 26 (22): 28396–412. https://doi.org/10.1364/OE.26.028396.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>중성자 토모그래피 데이터 처리</span>"
+    ]
+  },
+  {
+    "objectID": "src/centering.html",
+    "href": "src/centering.html",
+    "title": "3  회전 중심 (COR)",
+    "section": "",
+    "text": "3.1 Vo et al. (2014)",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>회전 중심 (COR)</span>"
+    ]
+  },
+  {
+    "objectID": "src/centering.html#vo2014",
+    "href": "src/centering.html#vo2014",
+    "title": "3  회전 중심 (COR)",
+    "section": "",
+    "text": "Vo, Nghia T., Michael Drakopoulos, Robert C. Atwood, and Christina Reinhard. 2014. “Reliable Method for Calculating the Center of Rotation in Parallel-Beam Tomography.” Opt. Express 22 (16): 19078–86. https://doi.org/10.1364/OE.22.019078.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>회전 중심 (COR)</span>"
+    ]
+  },
+  {
+    "objectID": "src/ring_artifact.html",
+    "href": "src/ring_artifact.html",
+    "title": "4  Ring 아티팩트 제거",
+    "section": "",
+    "text": "4.1 Raven (1998)\n사이노그램 \\(S[\\theta,\\,x]\\) 에 대해 푸리에 변환을 한 후 버터워스 low-pass filter \\(H(u, v)\\) 를 사용한다.\n\\[\nH(u, v) = \\left \\{\\begin{array}{ll} \\dfrac{1}{1+ (u/u_0)^{2n}} \\qquad & \\text{if }|v|\\le v_0 \\\\ 1 & \\text{otherwise}\\end{array}\\right.\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Ring 아티팩트 제거</span>"
+    ]
+  },
+  {
+    "objectID": "src/ring_artifact.html#titarenko20101489",
+    "href": "src/ring_artifact.html#titarenko20101489",
+    "title": "4  Ring 아티팩트 제거",
+    "section": "4.2 Titarenko, Withers, and Yagola (2010)",
+    "text": "4.2 Titarenko, Withers, and Yagola (2010)\n하나의 사이노그램 \\(S[\\theta, x]\\) 를 생각하자. 이상적인 사이노그램은 연속이지만 실제 측정값은 이산적이므로 \\(s_{ij}= S[\\theta_i, x_j]\\) 라고 쓸 수 있다.\n여러 실험적 오차로 인해 샘플에 대해 원래 시노그램이 가져야 할 값 \\(s_{ij}\\) 와 실제 측정된 값 \\(\\tilde{s}_{ij}\\) 사이에는 오차가 있다. 특히 링 아티팩트를 주는 픽셀마다의 불균일성이 원인이라면 그것은 \\(\\theta_i\\) 에 의존하지 않고 \\(x_j\\) 에만 의존한다. 이것을 \\(q_j=q(x_j)\\) 라고 하자. 즉\n\\[\n\\tilde{s}_{ij} = s_{ij} - q_j.\n\\tag{4.1}\\]\n\n\n4.2.1 Regulaized solution\n우리는 \\(S[\\theta,\\,x]\\) 가 매끄럽다고(원문에서는 smooth, 수학적인 의미에서 무한번 미분 가능하다는 의미에서의 smooth 인가?) 가정한다. Finite dimensional approxmation 에 따라 아래와 같이 정해지는 functional \\(G[q]\\) 를 최소화 해야 한다.\n\\[\nG[q] = \\sum_{i=1}^{N_\\theta} \\sum_{j=1}^{N_x} \\left| s_{ij}- s_{i, j+1}\\right|^2 = \\sum_{i=1}^{N_\\theta} \\sum_{j=1}^{N_x} \\left| \\tilde{s}_{ij} = \\tilde{s}_{i, j+1} + q_j - q_{j+1}\\right|^2\n\\tag{4.2}\\]\n여기서 \\(N_\\theta\\) 는 회전각의 갯수이며 \\(N_x\\) 는 픽셀의 갯수이다. 여기서 해 \\(q= \\begin{bmatrix} q_1 & \\cdots & q_{N_x}\\end{bmatrix}^T\\) 는 유일하지 않은데 임의의 상수 \\(c\\) 에 대해 \\(G[q] = G[q+c]\\) 이기 때문이다.\n여기서 regularization 을 사용하는데 \\(q\\) 는 기본적으로 실험 오차를 나타내므로\n\\[\nN_\\theta \\|q\\|^2 = N_\\theta \\left(\\sum_{j} |q_j|^2\\right)\n\\]\n를 최소화 하도록 한다. 즉 우리가 최소화 하는것은 \\(G[q]\\) 가 아니라 어떤 regularization parameter \\(\\lambda\\) 에 대해\n\\[\nM_\\lambda [q] = G[q] + \\lambda N_q \\|q\\|^2\n\\]\n를 최소화 하는 \\(\\lambda\\) 를 찾는다. 이 때 당연히 \\(\\lambda &gt; 0\\) 이어야 한다.\n\n\n\n\nRaven, Carsten. 1998. “Numerical Removal of Ring Artifacts in Microtomography.” Review of Scientific Instruments 69: 2978–80. https://api.semanticscholar.org/CorpusID:53389111.\n\n\nTitarenko, Sofya, Philip J. Withers, and Anatoly Yagola. 2010. “An Analytical Formula for Ring Artefact Suppression in x-Ray Tomography.” Applied Mathematics Letters 23 (12): 1489–95. https://doi.org/https://doi.org/10.1016/j.aml.2010.08.022.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Ring 아티팩트 제거</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "5  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Münch, Beat, Pavel Trtik, Federica Marone, and Marco Stampanoni. 2009.\n“Stripe and Ring Artifact Removal with Combined Wavelet — Fourier\nFiltering.” Opt. Express 17 (10): 8567–91. https://doi.org/10.1364/OE.17.008567.\n\n\nRaven, Carsten. 1998. “Numerical Removal of Ring Artifacts in\nMicrotomography.” Review of Scientific Instruments 69:\n2978–80. https://api.semanticscholar.org/CorpusID:53389111.\n\n\nRivers, Mark. 1988. “Tutorial Introduction to x-Ray Computed\nMicrotomography Data Processing.” https://www.mcs.anl.gov/research/projects/X-ray-cmt/rivers/tutorial.html.\n\n\nTitarenko, Sofya, Philip J. Withers, and Anatoly Yagola. 2010. “An\nAnalytical Formula for Ring Artefact Suppression in x-Ray\nTomography.” Applied Mathematics Letters 23 (12):\n1489–95. https://doi.org/https://doi.org/10.1016/j.aml.2010.08.022.\n\n\nVo, Nghia T., Robert C. Atwood, and Michael Drakopoulos. 2018.\n“Superior Techniques for Eliminating Ring Artifacts in x-Ray\nMicro-Tomography.” Opt. Express 26 (22): 28396–412. https://doi.org/10.1364/OE.26.028396.\n\n\nVo, Nghia T., Michael Drakopoulos, Robert C. Atwood, and Christina\nReinhard. 2014. “Reliable Method for Calculating the Center of\nRotation in Parallel-Beam Tomography.” Opt. Express 22\n(16): 19078–86. https://doi.org/10.1364/OE.22.019078.",
+    "crumbs": [
+      "References"
     ]
   }
 ]
