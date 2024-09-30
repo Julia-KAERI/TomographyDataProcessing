@@ -1,1 +1,1 @@
-{"entries":[{"key":"fig-tomo_setting","caption":"토모그래피 실험 세팅 (From @TITARENKO20101489)","order":{"number":1,"section":[2,1,0,0,0,0,0]}}],"options":{"chapters":true},"headings":["토모그래피-실험-세팅","데이터셋","데이터-처리","영역-선택","파일-읽기","잡음-제거","샘플-영상-정규화","사이노그램","회전중심-찾기","링스트립-아티팩트-제거"]}
+{"options":{"chapters":true},"entries":[{"caption":"토모그래피 실험 세팅 (From @TITARENKO20101489)","key":"fig-tomo_setting","order":{"section":[2,1,0,0,0,0,0],"number":1}}],"headings":["토모그래피-실험-세팅","데이터셋","데이터-처리","영역-선택","파일-읽기","잡음-제거","샘플-영상-정규화","사이노그램","회전중심-찾기","링스트립-아티팩트-제거"]}
