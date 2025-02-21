@@ -1,23 +1,23 @@
 {
   "index.qmd": {
-    "index.html": "48822fe9"
+    "index.html": "89fd529b"
   },
   "intro.qmd": {
-    "intro.html": "5979b553"
+    "intro.html": "285e6759"
   },
   "src/data_processing.qmd": {
-    "data_processing.html": "6e4f232f"
-  },
-  "src/ring_artifact.qmd": {
-    "ring_artifact.html": "546efbc9"
-  },
-  "summary.qmd": {
-    "summary.html": "02c5f6d8"
-  },
-  "references.qmd": {
-    "references.html": "6734a3b6"
+    "data_processing.html": "6328b348"
   },
   "src/centering.qmd": {
-    "centering.html": "7e399350"
+    "centering.html": "64a63f39"
+  },
+  "src/ring_artifact.qmd": {
+    "ring_artifact.html": "266c8dc6"
+  },
+  "summary.qmd": {
+    "summary.html": "8808665c"
+  },
+  "references.qmd": {
+    "references.html": "fe8dbd09"
   }
 }
