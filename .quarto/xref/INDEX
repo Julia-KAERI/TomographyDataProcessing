@@ -19,5 +19,8 @@
   },
   "references.qmd": {
     "references.html": "fe8dbd09"
+  },
+  "src/theory.qmd": {
+    "theory.html": "80980de1"
   }
 }

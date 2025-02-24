@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tomography - 4&nbsp; Ring 아티팩트 제거</title>
+<title>Tomography - 5&nbsp; Ring 아티팩트 제거</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -130,7 +130,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../src/ring_artifact.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ring 아티팩트 제거</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../src/ring_artifact.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Ring 아티팩트 제거</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -169,26 +169,32 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../src/theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">토모그래피</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../src/data_processing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">중성자 토모그래피 데이터 처리</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">중성자 토모그래피 데이터 처리</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../src/centering.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">회전 중심 (COR)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">회전 중심 (COR)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../src/ring_artifact.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ring 아티팩트 제거</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Ring 아티팩트 제거</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -207,10 +213,10 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#raven1998" id="toc-raven1998" class="nav-link active" data-scroll-target="#raven1998"><span class="header-section-number">4.1</span> <span class="citation" data-cites="Raven1998">Raven (1998)</span></a></li>
-  <li><a href="#titarenko20101489" id="toc-titarenko20101489" class="nav-link" data-scroll-target="#titarenko20101489"><span class="header-section-number">4.2</span> <span class="citation" data-cites="TITARENKO20101489">Titarenko, Withers, and Yagola (2010)</span></a>
+  <li><a href="#raven1998" id="toc-raven1998" class="nav-link active" data-scroll-target="#raven1998"><span class="header-section-number">5.1</span> <span class="citation" data-cites="Raven1998">Raven (1998)</span></a></li>
+  <li><a href="#titarenko20101489" id="toc-titarenko20101489" class="nav-link" data-scroll-target="#titarenko20101489"><span class="header-section-number">5.2</span> <span class="citation" data-cites="TITARENKO20101489">Titarenko, Withers, and Yagola (2010)</span></a>
   <ul class="collapse">
-  <li><a href="#regulaized-solution" id="toc-regulaized-solution" class="nav-link" data-scroll-target="#regulaized-solution"><span class="header-section-number">4.2.1</span> Regulaized solution</a></li>
+  <li><a href="#regulaized-solution" id="toc-regulaized-solution" class="nav-link" data-scroll-target="#regulaized-solution"><span class="header-section-number">5.2.1</span> Regulaized solution</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -220,7 +226,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ring 아티팩트 제거</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Ring 아티팩트 제거</span></h1>
 </div>
 
 
@@ -237,8 +243,8 @@ window.Quarto = {
 </header>
 
 
-<section id="raven1998" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="raven1998"><span class="header-section-number">4.1</span> <span class="citation" data-cites="Raven1998">Raven (<a href="../references.html#ref-Raven1998" role="doc-biblioref">1998</a>)</span></h2>
+<section id="raven1998" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="raven1998"><span class="header-section-number">5.1</span> <span class="citation" data-cites="Raven1998">Raven (<a href="../references.html#ref-Raven1998" role="doc-biblioref">1998</a>)</span></h2>
 <p>사이노그램 <span class="math inline">\(S[\theta,\,x]\)</span> 에 대해 푸리에 변환</p>
 <p><span class="math display">\[
 \tilde{S}[u, v] = \mathfrak{F}[S[\theta, x]]
@@ -247,23 +253,23 @@ window.Quarto = {
 <p>버터워스(Butterworth) low-pass filter <span class="math inline">\(H(u, v)\)</span> 를 사용한다.</p>
 <p><span id="eq-butterworth_low_pass_filter"><span class="math display">\[
 H(u, v) = \left \{\begin{array}{ll} \dfrac{1}{1+ (u/u_0)^{2n}} \qquad &amp; \text{if }|v|\le v_0 \\ 1 &amp; \text{otherwise}\end{array}\right.
-\tag{4.1}\]</span></span></p>
+\tag{5.1}\]</span></span></p>
 <p><br></p>
 </section>
-<section id="titarenko20101489" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="titarenko20101489"><span class="header-section-number">4.2</span> <span class="citation" data-cites="TITARENKO20101489">Titarenko, Withers, and Yagola (<a href="../references.html#ref-TITARENKO20101489" role="doc-biblioref">2010</a>)</span></h2>
+<section id="titarenko20101489" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="titarenko20101489"><span class="header-section-number">5.2</span> <span class="citation" data-cites="TITARENKO20101489">Titarenko, Withers, and Yagola (<a href="../references.html#ref-TITARENKO20101489" role="doc-biblioref">2010</a>)</span></h2>
 <p>하나의 사이노그램 <span class="math inline">\(S[\theta, x]\)</span> 를 생각하자. 이상적인 사이노그램은 연속이지만 실제 측정값은 이산적이므로 <span class="math inline">\(s_{ij}= S[\theta_i, x_j]\)</span> 라고 쓸 수 있다.</p>
 <p>여러 실험적 오차로 인해 샘플에 대해 원래 시노그램이 가져야 할 값 <span class="math inline">\(s_{ij}\)</span> 와 실제 측정된 값 <span class="math inline">\(\tilde{s}_{ij}\)</span> 사이에는 오차가 있다. 특히 링 아티팩트를 주는 픽셀마다의 불균일성이 원인이라면 그것은 <span class="math inline">\(\theta_i\)</span> 에 의존하지 않고 <span class="math inline">\(x_j\)</span> 에만 의존한다. 이것을 <span class="math inline">\(q_j=q(x_j)\)</span> 라고 하자. 즉</p>
 <p><span id="eq-tirarenko2010_1"><span class="math display">\[
 \tilde{s}_{ij} = s_{ij} - q_j.
-\tag{4.2}\]</span></span></p>
+\tag{5.2}\]</span></span></p>
 <p><br></p>
-<section id="regulaized-solution" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="regulaized-solution"><span class="header-section-number">4.2.1</span> Regulaized solution</h3>
+<section id="regulaized-solution" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="regulaized-solution"><span class="header-section-number">5.2.1</span> Regulaized solution</h3>
 <p>우리는 <span class="math inline">\(S[\theta,\,x]\)</span> 가 매끄럽다고(원문에서는 smooth, 수학적인 의미에서 무한번 미분 가능하다는 의미에서의 smooth 인가?) 가정한다. Finite dimensional approxmation 에 따라 아래와 같이 정해지는 functional <span class="math inline">\(G[q]\)</span> 를 최소화 해야 한다.</p>
 <p><span id="eq-tirarenko2010_2"><span class="math display">\[
 G[q] = \sum_{i=1}^{N_\theta} \sum_{j=1}^{N_x} \left| s_{ij}- s_{i, j+1}\right|^2 = \sum_{i=1}^{N_\theta} \sum_{j=1}^{N_x} \left| \tilde{s}_{ij} = \tilde{s}_{i, j+1} + q_j - q_{j+1}\right|^2
-\tag{4.3}\]</span></span></p>
+\tag{5.3}\]</span></span></p>
 <p>여기서 <span class="math inline">\(N_\theta\)</span> 는 회전각의 갯수이며 <span class="math inline">\(N_x\)</span> 는 픽셀의 갯수이다. 여기서 해 <span class="math inline">\(q= \begin{bmatrix} q_1 &amp; \cdots &amp; q_{N_x}\end{bmatrix}^T\)</span> 는 유일하지 않은데 임의의 상수 <span class="math inline">\(c\)</span> 에 대해 <span class="math inline">\(G[q] = G[q+c]\)</span> 이기 때문이다.</p>
 <p>여기서 regularization 을 사용하는데 <span class="math inline">\(q\)</span> 는 기본적으로 실험 오차를 나타내므로</p>
 <p><span class="math display">\[
@@ -700,12 +706,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../src/centering.html" class="pagination-link" aria-label="회전 중심 (COR)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">회전 중심 (COR)</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">회전 중심 (COR)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../summary.html" class="pagination-link" aria-label="Summary">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

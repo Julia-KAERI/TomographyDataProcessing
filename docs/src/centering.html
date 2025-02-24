@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tomography - 3&nbsp; 회전 중심 (COR)</title>
+<title>Tomography - 4&nbsp; 회전 중심 (COR)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -75,16 +109,16 @@ div.csl-indent {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "일치 없음",
+    "search-matching-documents-text": "일치된 문서",
+    "search-copy-link-title": "검색 링크 복사",
+    "search-hide-matches-text": "추가 검색 결과 숨기기",
+    "search-more-match-text": "추가 검색결과",
+    "search-more-matches-text": "추가 검색결과",
+    "search-clear-button-title": "제거",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
+    "search-detached-cancel-button-title": "취소",
+    "search-submit-button-title": "검색",
     "search-label": "Search"
   }
 }</script>
@@ -127,11 +161,11 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../src/centering.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">회전 중심 (COR)</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../src/centering.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">회전 중심 (COR)</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -169,26 +203,32 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../src/theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">토모그래피와 Filtered Back Projection</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../src/data_processing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">중성자 토모그래피 데이터 처리</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">중성자 토모그래피 데이터 처리</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../src/centering.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">회전 중심 (COR)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">회전 중심 (COR)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../src/ring_artifact.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ring 아티팩트 제거</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Ring 아티팩트 제거</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -204,10 +244,12 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#vo2014" id="toc-vo2014" class="nav-link active" data-scroll-target="#vo2014"><span class="header-section-number">3.1</span> <span class="citation" data-cites="Vo2014">Vo et al. (2014)</span></a></li>
+  <li><a href="#질량중심법" id="toc-질량중심법" class="nav-link active" data-scroll-target="#질량중심법"><span class="header-section-number">4.1</span> 질량중심법</a></li>
+  <li><a href="#image-registration-method-irm" id="toc-image-registration-method-irm" class="nav-link" data-scroll-target="#image-registration-method-irm"><span class="header-section-number">4.2</span> Image Registration Method (IRM)</a></li>
+  <li><a href="#vo2014" id="toc-vo2014" class="nav-link" data-scroll-target="#vo2014"><span class="header-section-number">4.3</span> <span class="citation" data-cites="Vo2014">Vo et al. (2014)</span></a></li>
   </ul>
 </nav>
     </div>
@@ -216,7 +258,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">회전 중심 (COR)</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">회전 중심 (COR)</span></h1>
 </div>
 
 
@@ -233,6 +275,15 @@ window.Quarto = {
 </header>
 
 
+<div class="hidden">
+<p>% %</p>
+%
+<p><span class="math display">\[
+\DeclarePairedDelimiters{\set}{\{}{\}}
+\DeclareMathOperator*{\argmax}{argmax}
+\]</span></p>
+</div>
+<p><br></p>
 <p>토모그래피는 검출기 혹은 피사체를 <span class="math inline">\(0^\circ\)</span> 에서 <span class="math inline">\(180^\circ\)</span> 혹은 <span class="math inline">\(360^\circ\)</span> 회전시킨 투과영상을 찍는다. 만약 회전 중심(Center of Rotation, COR)이 정확하지 않을 경우 아티팩트가 생기는데 단지 1 픽셀만큼 벗어나더라도 눈에 띨 정도로 생기며 수 픽셀 벗어나면 제대로 된 reconstruction 이 되지 않는다.</p>
 <div id="fig-misalignment2" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -240,7 +291,7 @@ window.Quarto = {
 <img src="misalignment2.png" class="img-fluid figure-img" width="500">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-misalignment2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: Shepp-Logan 팬텀(<span class="math inline">\(1024 \times 1024\)</span>) 에 대한 reconstruction 결과 왼쪽부터 회전 중심에 대해 <span class="math inline">\(-1, 0, 1\)</span> 만큼 이동한 점을 중심으로 FBP 를 수행했다.
+그림&nbsp;4.1: Shepp-Logan 팬텀(<span class="math inline">\(1024 \times 1024\)</span>) 에 대한 reconstruction 결과 왼쪽부터 회전 중심에 대해 <span class="math inline">\(-1, 0, 1\)</span> 만큼 이동한 점을 중심으로 FBP 를 수행했다.
 </figcaption>
 </figure>
 </div>
@@ -250,7 +301,7 @@ Figure&nbsp;3.1: Shepp-Logan 팬텀(<span class="math inline">\(1024 \times 1024
 <img src="misalignment.png" class="img-fluid figure-img" width="400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-misalignment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.2: (a) 정확한 회전 중심에 대한 reconstruction. (b, c) 회전중심에 1 픽셀만큼 오류가 있을 때의 reconstruction. From <span class="citation" data-cites="Vo2014">Vo et al. (<a href="../references.html#ref-Vo2014" role="doc-biblioref">2014</a>)</span>
+그림&nbsp;4.2: (a) 정확한 회전 중심에 대한 reconstruction. (b, c) 회전중심에 1 픽셀만큼 오류가 있을 때의 reconstruction. From <span class="citation" data-cites="Vo2014">Vo et al. (<a href="../references.html#ref-Vo2014" role="doc-biblioref">2014</a>)</span>
 </figcaption>
 </figure>
 </div>
@@ -263,8 +314,76 @@ Figure&nbsp;3.2: (a) 정확한 회전 중심에 대한 reconstruction. (b, c) �
 </ol>
 <p>첫번째 방법은 그 무게중심이 그리는 사인곡선으로 부터 회전 중심을 찾는 방법이지만 보통 신뢰할 수 있는 결과를 주지는 못한다. 두번째 방법은 low constrast 조건과 image 에 회전에 무관한 defect 가 있을 경우 오차가 있을 수 있다. 세번째 방법은 가용한 정보를 모두 사용하지만 시간이 오래걸린다는 단점이 있다.(<span class="citation" data-cites="Vo2014">Vo et al. (<a href="../references.html#ref-Vo2014" role="doc-biblioref">2014</a>)</span>)</p>
 <p><br></p>
-<section id="vo2014" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="vo2014"><span class="header-section-number">3.1</span> <span class="citation" data-cites="Vo2014">Vo et al. (<a href="../references.html#ref-Vo2014" role="doc-biblioref">2014</a>)</span></h2>
+<section id="질량중심법" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="질량중심법"><span class="header-section-number">4.1</span> 질량중심법</h2>
+<p>아래 그림은 <span class="math inline">\(616 \times 616\)</span> 크기의 Shepp-Logan pantom 을 <span class="math inline">\((308,\, 308)\)</span> 을 중심으로 라돈 변환한 것에 대한 사이노그램이다.</p>
+<div id="fig-sinogram_1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sinogram_1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/sinogram.png" class="img-fluid figure-img" width="500">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sinogram_1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+그림&nbsp;4.3: <span class="math inline">\(616 \times 616\)</span> 크기의 Shepp-Logan pantom 을 <span class="math inline">\((308,\, 308)\)</span> 을 중심으로 라돈 변환한 것에 대한 사이노그램
+</figcaption>
+</figure>
+</div>
+<p><span class="math inline">\(x,\,y\)</span> 평면상의 2차원 물체의 질량중심은</p>
+<p><span id="eq-center_of_mass"><span class="math display">\[
+(x_c,\,y_c) = \left(\dfrac{\iint x \rho(\boldsymbol{r})\, d^2\boldsymbol{r}}{\iint \rho (\boldsymbol{r})\, d^2\boldsymbol{r}},\, \dfrac{\iint y \rho(\boldsymbol{r})\, d^2\boldsymbol{r}}{\iint \rho (\boldsymbol{r})\, d^2\boldsymbol{r}}\right)
+\tag{4.1}\]</span></span></p>
+<p>이며 이 점은 고정되어 있다. 이 이 물체를 <span class="math inline">\((c_x,\,c_y)\)</span> 를 중심으로 <span class="math inline">\(\theta\)</span> 만큼 회전시킨다면, projection <span class="math inline">\(p_\theta(t)\)</span> 에서의 질량 중심의 위치는</p>
+<p><span id="eq-center_of_mass_in_projection"><span class="math display">\[
+t_c(\theta) = \dfrac{\int t p_\theta(t)\, dt}{\int p_\theta(t)\, dt}
+\tag{4.2}\]</span></span></p>
+<p>이다. 또한 라돈변환으로부터 <span class="math inline">\(t_c\)</span> 는 <span id="eq-center_of_mass_as_rotation"><span class="math display">\[
+t_c(\theta) = (x_c-c_x) \cos \theta + (y_c-c_y) \sin \theta + t_r = r_c \cos (\theta - \theta_0) + t_r
+\tag{4.3}\]</span></span></p>
+<p>임을 알 수 있다. 실제 측정된 projection <span class="math inline">\(p_\theta(t_i)\)</span> 에 대해 <span class="math display">\[
+\overline{t}_c(\theta) = \dfrac{\sum_i t_i p_\theta (t_i)}{\sum_i p_\theta (t_i)}
+\]</span></p>
+<p>를 <a href="#eq-center_of_mass_as_rotation" class="quarto-xref">식&nbsp;<span>4.3</span></a> 에 대한 최소자승법을 통해 <span class="math inline">\(r_c,\, t_r\)</span> 을 구한다. 여기서 <span class="math inline">\(t_r\)</span> 이 회전 중심이다.</p>
+<p><a href="#fig-sinogram_1" class="quarto-xref">그림&nbsp;<span>4.3</span></a> 의 사이노그램이 <code>sino1</code> 변수에 저장되어 있다고 하자. 첫번째 축은 <span class="math inline">\(\theta\)</span> 이고 두번째 축은 <span class="math inline">\(t\)</span> 이다. 질량중심법은 아래와 같이 구현된다. 최소자승법을 위해 <a href="https://github.com/JuliaNLSolvers/LsqFit.jl">LsqFit.jl</a> 을 이용하였다.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">LsqFit</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>tc<span class="op">=</span>[]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>M, N <span class="op">=</span> <span class="fu">size</span>(sino1)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>ts <span class="op">=</span> <span class="fu">collect</span>(<span class="fl">1</span><span class="op">:</span>N)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>M</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="fu">sum</span>(sino1[j, <span class="op">:</span>])</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> <span class="fu">sum</span>(@. ts <span class="op">*</span> sino1[j, <span class="op">:</span>])</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">append!</span>(tc, p<span class="op">/</span>s)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>θ <span class="op">=</span> <span class="fu">collect</span>(<span class="fl">0.0</span><span class="op">:</span><span class="fl">0.3</span><span class="op">:</span><span class="fl">179.9</span>) <span class="op">.*</span> (<span class="cn">π</span><span class="op">/</span><span class="fl">180</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ps<span class="op">=</span>[<span class="fl">15.0</span>, <span class="fl">1.0</span>, <span class="fl">200.0</span>]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">model</span>(t, p) <span class="op">=</span> p[<span class="fl">1</span>] <span class="op">.*</span> <span class="fu">cos</span>.(t <span class="op">.+</span> p[<span class="fl">2</span>]) <span class="op">.+</span> p[<span class="fl">3</span>]</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>ft<span class="op">=</span><span class="fu">curve_fit</span>(model, θ, tc, ps)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>그 결과를 그림으로 그리면 아래와 같다. <a href="https://docs.makie.org/v0.22/explanations/backends/cairomakie">CairoMakie.jl</a> 와 <a href="https://github.com/JuliaStrings/LaTeXStrings.jl">LaTeXStrings.jl</a> 를 사용하였다.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> <span class="fu">Figure</span>()</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> CairoMakie.<span class="fu">Axis</span>(fig[<span class="fl">1</span>,<span class="fl">1</span>], xticks<span class="op">=</span>([<span class="fl">0</span>, <span class="cn">π</span><span class="op">/</span><span class="fl">2</span>, <span class="cn">π</span>], [L<span class="st">"0"</span>, L<span class="st">"π/2"</span>, L<span class="st">"π"</span>]), </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    xlabel <span class="op">=</span> L<span class="st">"θ"</span>, xlabelsize<span class="op">=</span><span class="fl">15</span>, ylabel<span class="op">=</span>L<span class="st">"t"</span>, ylabelsize<span class="op">=</span><span class="fl">15</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter!</span>(ax, θ,  tc, label <span class="op">=</span> <span class="st">"data"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines!</span>(ax, θ, <span class="fu">model</span>(θ, ft.param), linewidth<span class="op">=</span><span class="fl">3</span>, color<span class="op">=:</span>red, label<span class="op">=</span><span class="st">"Fit"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axislegend</span>(ax)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fig-com-cor" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-com-cor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/com_cor.png" class="img-fluid figure-img" width="500">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-com-cor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+그림&nbsp;4.4: 질량중심법
+</figcaption>
+</figure>
+</div>
+<p>피팅 결과 <span class="math inline">\(t_r=307.9999686393655\)</span> 로 회전 중심 308 과 거의 일치하는 결과를 얻었다. <br></p>
+</section>
+<section id="image-registration-method-irm" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="image-registration-method-irm"><span class="header-section-number">4.2</span> Image Registration Method (IRM)</h2>
+<p><br></p>
+</section>
+<section id="vo2014" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="vo2014"><span class="header-section-number">4.3</span> <span class="citation" data-cites="Vo2014">Vo et al. (<a href="../references.html#ref-Vo2014" role="doc-biblioref">2014</a>)</span></h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -329,12 +448,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "복사완료!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "복사완료!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -687,12 +806,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../src/data_processing.html" class="pagination-link" aria-label="중성자 토모그래피 데이터 처리">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">중성자 토모그래피 데이터 처리</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">중성자 토모그래피 데이터 처리</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../src/ring_artifact.html" class="pagination-link" aria-label="Ring 아티팩트 제거">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ring 아티팩트 제거</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Ring 아티팩트 제거</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
