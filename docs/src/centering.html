@@ -284,29 +284,54 @@ window.Quarto = {
 \]</span></p>
 </div>
 <p><br></p>
-<p>토모그래피는 검출기 혹은 피사체를 <span class="math inline">\(0^\circ\)</span> 에서 <span class="math inline">\(180^\circ\)</span> 혹은 <span class="math inline">\(360^\circ\)</span> 회전시킨 투과영상을 찍는다. 만약 회전 중심(Center of Rotation, COR)이 정확하지 않을 경우 아티팩트가 생기는데 단지 1 픽셀만큼 벗어나더라도 눈에 띨 정도로 생기며 수 픽셀 벗어나면 제대로 된 reconstruction 이 되지 않는다.</p>
-<div id="fig-misalignment2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<p>토모그래피는 검출기 혹은 피사체를 <span class="math inline">\(0^\circ\)</span> 에서 <span class="math inline">\(180^\circ\)</span> 혹은 <span class="math inline">\(360^\circ\)</span> 회전시킨 투과영상을 찍는다. 만약 회전 중심(Center of Rotation, COR)이 정확하지 않을 경우 아티팩트가 생기는데 단지 1 픽셀만큼 벗어나더라도 눈에 띨 정도로 생기며 수 픽셀 벗어나면 제대로 된 reconstruction 이 되지 않는다. Shepp-Logan 팬텀은 아래 그림과 같다.</p>
+<div id="fig-shepp-logan_1024" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-misalignment2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="misalignment2.png" class="img-fluid figure-img" width="500">
+<div aria-describedby="fig-shepp-logan_1024-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/shepp_logan_1024.png" class="img-fluid figure-img" width="300">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-misalignment2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-그림&nbsp;4.1: Shepp-Logan 팬텀(<span class="math inline">\(1024 \times 1024\)</span>) 에 대한 reconstruction 결과 왼쪽부터 회전 중심에 대해 <span class="math inline">\(-1, 0, 1\)</span> 만큼 이동한 점을 중심으로 FBP 를 수행했다.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-shepp-logan_1024-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+그림&nbsp;4.1: Shepp-Logan 팬텀
 </figcaption>
 </figure>
 </div>
+<p>이 영상을 이미지의 중심, 여기서는 <span class="math inline">\(c=512\)</span> 에 대해 라돈변환 하면 아래 그림과 같은 사이노그램을 얻는다.</p>
+<div id="fig-shepp-logan_sinogram_1024" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-shepp-logan_sinogram_1024-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/sinogram_shepp_logan_1024.png" class="img-fluid figure-img" width="400">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-shepp-logan_sinogram_1024-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+그림&nbsp;4.2: Shepp-Logan 팬텀에 대한 사이노그램
+</figcaption>
+</figure>
+</div>
+<p>이 사이노그램을 Filtered-Back Projection (FBP) 를 이용하여 reconstruction 할 수 있다. reconstruction 할 때는 회전 중심에 대한 정확한 값이 필요하며, 여기서는 앞서 말했듯이 <span class="math inline">\(c=512\)</span> 값을 사용해야 한다. 정확한 값을 사용하지 않으면 reconstruction 이 되지 않는다. 예를 들어 회전 중심을 10 만큼 차이가 나게 잡았을 경우 아래와 같은 결과가 나온다.</p>
 <div id="fig-misalignment" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-misalignment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="misalignment.png" class="img-fluid figure-img" width="400">
+<img src="figures/misalign_2.png" class="img-fluid figure-img" width="600">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-misalignment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-그림&nbsp;4.2: (a) 정확한 회전 중심에 대한 reconstruction. (b, c) 회전중심에 1 픽셀만큼 오류가 있을 때의 reconstruction. From <span class="citation" data-cites="Vo2014">Vo et al. (<a href="../references.html#ref-Vo2014" role="doc-biblioref">2014</a>)</span>
+그림&nbsp;4.3: (왼쪽) 정확한 회전 중심 (가운데) <span class="math inline">\(-10\)</span> 만큼의 회전 중심 이동
 </figcaption>
 </figure>
 </div>
 <p><br></p>
-<p>CT 에서 회전 중심을 찾는 것은 <strong>영상 정합(image registration)</strong>, 즉 동일한 대상에 대한 여려 이미지의 좌표계를 일치시키는 기술의 일종이다. 일반적으로 세가지 범주로 나눌 수 있다.</p>
+<p>회전 중심을 제대로 잡지 못했을 때 영상이 왜곡되는 것은 그 차이가 1 픽셀만큼이더라도 잘 나타난다. 아래 그림을 보자.</p>
+<div id="fig-misalignment" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-misalignment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/misalignment.png" class="img-fluid figure-img" width="600">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-misalignment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+그림&nbsp;4.4: (왼쪽, 오른쪽)회전 중심을 실제 회전 중심에서 <span class="math inline">\(-1\)</span>, <span class="math inline">\(+1\)</span> 만큼 바꾸었을 때의 recunstruction 결과, (가운데) 정확한 회전 중심을 사용하여 reconstructin 했을 때의 결과
+</figcaption>
+</figure>
+</div>
+<p>그림에서처럼 1 픽셀 만큼의 오차더라도 영상에 어느정도 왜곡이 나타나는 것을 알 수 있다.</p>
+<p><br></p>
+<p>CT 에서 회전 중심을 찾는 것은 <strong>영상 정합(image registration)</strong>, 즉 동일한 대상에 대한 여러 이미지의 좌표계를 일치시키는 기술의 일종이다. 일반적으로 세가지 범주로 나눌 수 있다.</p>
 <ol type="1">
 <li><p>사이노그램에서 각 회전각도마다 무게중심을 찾아 그 궤적을 본다.</p></li>
 <li><p><span class="math inline">\(0^\circ\)</span> 와 <span class="math inline">\(180^\circ\)</span> 에서 찍은 두 영상을 겹쳐 놓고 알고리즘을 이용하여 회전중심을 찾는다.</p></li>
@@ -323,7 +348,7 @@ window.Quarto = {
 <img src="figures/sinogram.png" class="img-fluid figure-img" width="500">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sinogram_1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-그림&nbsp;4.3: <span class="math inline">\(616 \times 616\)</span> 크기의 Shepp-Logan pantom 을 <span class="math inline">\((308,\, 308)\)</span> 을 중심으로 라돈 변환한 것에 대한 사이노그램
+그림&nbsp;4.5: <span class="math inline">\(616 \times 616\)</span> 크기의 Shepp-Logan pantom 을 <span class="math inline">\((308,\, 308)\)</span> 을 중심으로 라돈 변환한 것에 대한 사이노그램
 </figcaption>
 </figure>
 </div>
@@ -342,7 +367,7 @@ t_c(\theta) = (x_c-c_x) \cos \theta + (y_c-c_y) \sin \theta + t_r = r_c \cos (\t
 \overline{t}_c(\theta) = \dfrac{\sum_i t_i p_\theta (t_i)}{\sum_i p_\theta (t_i)}
 \]</span></p>
 <p>를 <a href="#eq-center_of_mass_as_rotation" class="quarto-xref">식&nbsp;<span>4.3</span></a> 에 대한 최소자승법을 통해 <span class="math inline">\(r_c,\, t_r\)</span> 을 구한다. 여기서 <span class="math inline">\(t_r\)</span> 이 회전 중심이다.</p>
-<p><a href="#fig-sinogram_1" class="quarto-xref">그림&nbsp;<span>4.3</span></a> 의 사이노그램이 <code>sino1</code> 변수에 저장되어 있다고 하자. 첫번째 축은 <span class="math inline">\(\theta\)</span> 이고 두번째 축은 <span class="math inline">\(t\)</span> 이다. 질량중심법은 아래와 같이 구현된다. 최소자승법을 위해 <a href="https://github.com/JuliaNLSolvers/LsqFit.jl">LsqFit.jl</a> 을 이용하였다.</p>
+<p><a href="#fig-sinogram_1" class="quarto-xref">그림&nbsp;<span>4.5</span></a> 의 사이노그램이 <code>sino1</code> 변수에 저장되어 있다고 하자. 첫번째 축은 <span class="math inline">\(\theta\)</span> 이고 두번째 축은 <span class="math inline">\(t\)</span> 이다. 질량중심법은 아래와 같이 구현된다. 최소자승법을 위해 <a href="https://github.com/JuliaNLSolvers/LsqFit.jl">LsqFit.jl</a> 을 이용하였다.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">LsqFit</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>tc<span class="op">=</span>[]</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>M, N <span class="op">=</span> <span class="fu">size</span>(sino1)</span>
@@ -372,7 +397,7 @@ t_c(\theta) = (x_c-c_x) \cos \theta + (y_c-c_y) \sin \theta + t_r = r_c \cos (\t
 <img src="figures/com_cor.png" class="img-fluid figure-img" width="500">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-com-cor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-그림&nbsp;4.4: 질량중심법
+그림&nbsp;4.6: 질량중심법
 </figcaption>
 </figure>
 </div>

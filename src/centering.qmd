@@ -11,19 +11,32 @@ crossref:
 
 </br>
 
-토모그래피는 검출기 혹은 피사체를 $0^\circ$ 에서 $180^\circ$ 혹은 $360^\circ$ 회전시킨 투과영상을 찍는다. 만약 회전 중심(Center of Rotation, COR)이 정확하지 않을 경우 아티팩트가 생기는데 단지 1 픽셀만큼 벗어나더라도 눈에 띨 정도로 생기며 수 픽셀 벗어나면 제대로 된 reconstruction 이 되지 않는다. 
+토모그래피는 검출기 혹은 피사체를 $0^\circ$ 에서 $180^\circ$ 혹은 $360^\circ$ 회전시킨 투과영상을 찍는다. 만약 회전 중심(Center of Rotation, COR)이 정확하지 않을 경우 아티팩트가 생기는데 단지 1 픽셀만큼 벗어나더라도 눈에 띨 정도로 생기며 수 픽셀 벗어나면 제대로 된 reconstruction 이 되지 않는다. Shepp-Logan 팬텀은 아래 그림과 같다.
 
-![Shepp-Logan 팬텀($1024 \times 1024$) 에 대한 reconstruction 결과 왼쪽부터 회전 중심에 대해 $-1, 0, 1$ 만큼 이동한 점을 중심으로 FBP 를 수행했다.](misalignment2.png){#fig-misalignment2 width=500}
+![Shepp-Logan 팬텀](figures/shepp_logan_1024.png){#fig-shepp-logan_1024 width=300}
 
+이 영상을 이미지의 중심, 여기서는 $c=512$ 에 대해 라돈변환 하면 아래 그림과 같은 사이노그램을 얻는다.
 
-![(a) 정확한 회전 중심에 대한 reconstruction. (b, c) 회전중심에 1 픽셀만큼 오류가 있을 때의 reconstruction. From @Vo2014](misalignment.png){#fig-misalignment width=400}
+![Shepp-Logan 팬텀에 대한 사이노그램](figures/sinogram_shepp_logan_1024.png){#fig-shepp-logan_sinogram_1024 width=400}
+
+이 사이노그램을 Filtered-Back Projection (FBP) 를 이용하여 reconstruction 할 수 있다. reconstruction 할 때는 회전 중심에 대한 정확한 값이 필요하며, 여기서는 앞서 말했듯이 $c=512$ 값을 사용해야 한다. 정확한 값을 사용하지 않으면 reconstruction 이 되지 않는다. 예를 들어 회전 중심을 10 만큼 차이가 나게 잡았을 경우 아래와 같은 결과가 나온다.
+
+![(왼쪽) 정확한 회전 중심 (가운데) $-10$ 만큼의 회전 중심 이동](figures/misalign_2.png){#fig-misalignment width=600}
+
+<br>
+
+회전 중심을 제대로 잡지 못했을 때 영상이 왜곡되는 것은 그 차이가 1 픽셀만큼이더라도 잘 나타난다. 아래 그림을 보자.
+
+![(왼쪽, 오른쪽)회전 중심을 실제 회전 중심에서 $-1$, $+1$ 만큼 바꾸었을 때의 recunstruction 결과, (가운데) 정확한 회전 중심을 사용하여 reconstructin 했을 때의 결과](figures/misalignment.png){#fig-misalignment width=600}
+
+그림에서처럼 1 픽셀 만큼의 오차더라도 영상에 어느정도 왜곡이 나타나는 것을 알 수 있다.
 
 
 </br>
 
-CT 에서 회전 중심을 찾는 것은 **영상 정합(image registration)**, 즉 동일한 대상에 대한 여려 이미지의 좌표계를 일치시키는 기술의 일종이다. 일반적으로 세가지 범주로 나눌 수 있다.
+CT 에서 회전 중심을 찾는 것은 **영상 정합(image registration)**, 즉 동일한 대상에 대한 여러 이미지의 좌표계를 일치시키는 기술의 일종이다. 일반적으로 세가지 범주로 나눌 수 있다.
 
-1. 사이노그램에서 각 회전각도마다 무게중심을 찾아 그 궤적을 본다.  
+1. 사이노그램에서 각 회전각도마다 질량중심을 찾아 그 궤적을 본다.  
 
 2. $0^\circ$ 와 $180^\circ$ 에서 찍은 두 영상을 겹쳐 놓고 알고리즘을 이용하여 회전중심을 찾는다.
 

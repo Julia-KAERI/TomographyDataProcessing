@@ -10,7 +10,7 @@ crossref:
 {{< include ../latexmacros.qmd >}}
 
 </br>
-
+<!-- 
 ## 라돈 변환
 다음의 그림을 보자. 이미지가 $0$ 에서 $1$ 사이의 값을 가지며 검은색이 $0$, 흰색이 $1$ 이라고 하자. 이 그림은 실제로 회색조 $1024 \times 1024$ 크기의 이미지이다. 이 이미지는 `f` 라는 배열의 변수로 저장되었다고 하자. $f(x, y)$ 라는 함수 나 `f[i, j]` 라는 형식의 배열로 이해해도 상관 없다. 
 
@@ -59,9 +59,11 @@ $$
 
 Reconstruction 은 sinogram 으로부터 원래의 이미지를 구성하는 것을 말한다. Fourier slice theorem (projection slice theorem 혹은 central slice theorem) 은 수학적으로 simogram 으로부터 원래의 이미지를 구성할 수 있다는 것을 보장한다. 이미지로부터 sinogram 을 얻는 것을 라돈 변환이라고 하듯이 sinogram 으로부터 이미지를 얻는 것을 역 라돈 변환 (inverse Radon transformation) 이라고 한다.
 
-</br>
+</br> -->
 
-## 토모그래피
+## 투과 영상(토모그래피)
+
+### 측정 세팅
 
 토모그래피의 기본적인 개념은 아래 그림과 같다. 중성자나 X 선과 같이 물질을 투과하는 성질이 강한 입자를 물질에 쐬어 주면 대부분의 입자가 물질을 투과하여 검출기에 검출된다. 하지만 모든 입자가 투과하지는 못하며 물질의 성질에 따라 일부 입자가 산란되거나 흡수되며 검출기에서는 산란되거나 흡수되지 않고 투과되는 빔의 강도를 검출기 위치별로 측정한다. 검출기는 1차원일수도 있고 2차원 일 수도 있다.
 
@@ -72,28 +74,33 @@ Reconstruction 은 sinogram 으로부터 원래의 이미지를 구성하는 것
 
 </center>
 
-비에 따라 
-
-&emsp;($1$) 검출기와 선원이 고정된 상태에서 측정 대상이 회전중심을 기준으로 회전할 수도 있고, 
-
-&emsp;($2$) 측정 대상이 고정된 상태에서 검출기와 선원(radiation source) 이 회전할 수도 있다. 
-
-우리는 앞서 라돈 변환을 설명할 때 (1) 의 경우에 대대 설명했지만, 수학적인 설명은 (2) 의 경우를 기준으로 설명하겠다. (이 분야의 대표적인 교과서들이 (2) 를 기준으로 설명하였으므로...) 물리적으로는 (1) 과 (2) 는 서로 회전 방향이 반대라면 동일하다.  즉 (1) 의 경우 시계방향으로 $\theta$ 만큼의 회전은 (2) 의 경우에서 반시계방향으로 $\theta$ 만큼의 회전과 완전히 동일하다. 
+실험 장비에 따라 두가지가 가능하다.
 
 
-물질의 위치에 따른 선형 감쇄 계수가 $\mu (x,\,y)$ 로 주어졌다고 하자. 감쇄 계수는 $I_0$ 의 강도로 입사된 빔이 $ds$ 만큼의 경로를 진행했을 때 감소되는 빔의 강도이다. 즉, 
+&emsp;($1$) 측정 대상이 고정된 상태에서 검출기와 선원(radiation source) 이 회전 중심을 기준으로 회전하는 경우.
+
+&emsp;($2$) 검출기와 선원이 고정된 상태에서 측정 대상이 회전중심을 기준으로 회전하는 경우.
+
+
+
+우선 1차원 검출기를 생각하자. ($1$) 의 경우 검출기와 선원이 반시계 방향으로 $\theta$ 만큼 회전하는 것과 ($2$) 의 경우 측정 대상이 시계방항으로 $\theta$ 만큼 회전하는 것은 동일하다. 
+
+</br>
+
+### 투과 영상 측정
+일단은 회전시키지 않은 경우에 대해 생각하자. 물질의 위치에 따른 선형 감쇄 계수가 $\mu (x,\,y)$ 로 주어졌다고 하자. 감쇄 계수는 $I$ 의 강도(intensity) 의 빔이 $ds$ 만큼의 경로를 진행했을 때 감소되는 빔의 정도이다. 즉, 
 
 $$
-\mu = -\dfrac{1}{I}\dfrac{dI}{ds}
-$$
+\mu := -\dfrac{1}{I}\dfrac{dI}{ds}
+$$ {#eq-linear_attenuation_coefficient}
 
-이다. 선원에서 $I_0$ 의 빔의 강도를 가진 빔이 $C$ 의 경로를 따라 갔을 때의 빔의 강도는
+이다. 따라서 선원에서 $I_0$ 의 빔의 강도를 가진 빔이 $C$ 의 경로를 따라 갔을 때의 빔의 강도는
 
 $$
 I = I_0 \exp \left[-\int_C \mu (x, y)\, ds\right] 
 $$ {#eq-beam_intensity}
 
-가 된다. 또한 빔이 $x$ 값이 고정된 직선 경로를 따른다면, 
+가 된다. 또한 빔이 $x$ 값이 고정된 직선 경로를 따른다면, 그 직선 경로가 정해진 $x$ 좌표에 대해 $y_i \to y_f$ 라면,
 
 $$
 I(x) = I_0 \exp \left[-\int_{y_i}^{y_f} \mu (x, y)\, dy\right] 
@@ -114,9 +121,11 @@ $$ {#eq-beam_intensity_formula}
 
 ## Projection
 
-토모그래피에 있어 물질은 $\mu (x, y)$ 를 의미한다. $\mu$ 는 선원, 물질의 종류 및 밀도에 따라 달라지는 값이며, 토모그래피는 projection들 을 모아 $\mu(x, y)$ (3차원 토모그래피의 경우는 $\mu(x, y, z)$) 를 재구성(reconstruction) 하는 방법이다.
+### Projection 과 Sinogram
 
-이제 선원과 검출기를 반시계방향으로 $\theta$ 만큼 돌려서 찍었다고 하자. 이 데이터를 $I_\theta (x)$ 라고 한다. 이것은 앞서 라돈 변환에서의 projection $p_\theta(t)$ 와 같다.
+이제 선원과 검출기를 $\theta$ 만큼 회전시킨다고 해 보자. 토모그래피에 있어 물질은 $\mu (x, y)$ 를 의미한다. $\mu$ 는 선원, 물질의 종류 및 밀도에 따라 달라지는 값이며, 토모그래피는 여러 $\theta$ 에서 찍은 영상들을 모아 2차원의 경우 $\mu(x, y)$ (3차원 토모그래피의 경우는 $\mu(x, y, z)$) 를 재구성(reconstruction) 하는 방법이다.
+
+이제 선원과 검출기를 반시계방향으로 $\theta$ 만큼 돌려서 찍었다고 하자. 검출기의 위치 변수 $t$ 에 대해 이 데이터를 $p_\theta (t)$ 라고 하자. 이 $p_\theta(t)$ 를 **projection** 이라고 한다.
 
 <center>
 
@@ -126,11 +135,27 @@ $$ {#eq-beam_intensity_formula}
 
 
 </br>
-이제 라돈 변환을 잠시 다른 모양의 동등한 식으로 바꿔 보자.
+
+projection 을 $\mu(x,\,y)$ 에 대한 식으로 표현하면 아래와 같다.
 
 $$
 p_\theta(t) = \int_{-\infty}^{\infty} \mu(x,\,y)\, \delta (x\cos \theta + y \sin \theta -t )\, dx\,dy 
 $$ {#eq-projection_1}
+
+
+여러 각에서 찍은 projection 을 모아 2차원 데이터 $S(\theta,\,t)$ 로 만들 수 있는데 이것을 **사이노그램 (sinogram)** 이라고 한다. 사이노그램은 아래 그림과 같이 생겼다.
+
+![Shepp-Logan 팬텀에 대한 사이노그램](figures/sinogram_shepp_logan_1024.png){#fig-shepp-logan_sinogram_1024 width=400}
+
+</br>
+
+
+
+### 라돈변환과 역라돈 변환
+
+$\mu(x,\,y)$ 를 알면 사이노그램을 얻을 수 있다. 이를 **라돈 변환(Radon transform)** 이라고 한다. 거꾸로 사이노그램으로부터 $\mu(x,\,y)$ 를 얻는 것을 **역 라돈 변환(inverse Radon transfrom)** 이라고 한다. Fourier slice theorem (projection slice theorem 혹은 central slice theorem 이라고 불리기도 한다) 은 수학적으로 사이노그램으로부터 원래의 이미지를 구성할 수 있다는 것, 즉 역 라돈 변환이 가능하다는 것을 보장한다. 이제 Fourier slice theorem 에 대해 알아보자.
+
+
 
 </br>
 
@@ -138,7 +163,29 @@ $$ {#eq-projection_1}
 
 ### 푸리에 변환과 역변환 
 
-이차원 함수 $f(x, y)$ 을 2차원 푸리에변환 한 함수 $\mathfrak{F}[f](u, v) = F(u, v)$ 는 다음과 같다.
+
+$f:\R \to \R$ 에 대해 
+
+$$
+\mathfrak{F}[f](u) := \int f(x) \, e^{-2\pi i u x}\, dx
+$$
+
+를 $f$ 에 대한 푸리에 변환이라고 하며,
+
+$$
+\mathfrak{F}^{-1}[f](t) := \int f(u)e^{2\pi i u t}\, du
+$$
+
+를 $f(u)$ 에 대한 푸리에 역변환이라고 한다. 푸리에 변환과 역변환은 $f$ 가 어떤 조건을 만족하면 (예를 들면 $|f|$ 와 $|\mathfrak{F}[f]|$가 적분가능하다던가, $f$ 가 2번 미분 가능하며 $\pm \infty$ 에서 $0$ 으로 발산한다든가)
+
+$$
+f = \mathfrak{F}^{-1}\left[\mathfrak{F}[f]\right]
+$$
+
+임을 의미한다. 토모그래피에서 다루는 $\mu(x,\,y)$ 나 $p_\theta(t)$ 는 당연히 이 조건에 부합한다.
+
+
+2차원 함수에도 비슷한 방법으로 정의 할 수 있다. 이차원 함수 $f(x, y)$ 을 2차원 푸리에변환 한 함수 $\mathfrak{F}[f](u, v) = F(u, v)$ 는 다음과 같다.
 
 $$
 F(u, v) = \mathfrak{F}[f](u, v) = \iint f(x, y) \, e^{-2\pi i ( ux+yv)}\, dx\, dy
@@ -154,15 +201,17 @@ $$
 
 </br>
 
+이것을 하는 이유는 우리가 사이노그림 $S(\theta,\,t)$ 를 이용하여 $\mathfrak{F}[\mu(x,\,y)]$ 를 구할 수 있으며, 따라서 푸리에 역변환을 통해 $\mu(x,\,y)$ 를 얻을 수 있기 때문이다. 이것을 보자.
+
+</br>
+
 ### Projection 과 푸리에변환
 
-Projection $p_\theta (s)$ 에 대한 1차원 푸리에 변환을 $S_\theta(\omega)$ 라 하면, 
+Projection $p_\theta (s)$ 에 대한 1차원 푸리에 변환을 $S_\theta(\rho)$ 라 하.
 
 $$
-S_\theta(\rho) = \int p_\theta(t) \,e^{-2\pi i\rho t}\, dt
+S_\theta(\rho) = \int p_\theta(t) \,e^{-2\pi i\rho t}\, dt.
 $$ {#eq-fourier_transform_of_projection}
-
-이다. 
 
 아래의 그림처럼 $\theta$ 만큼 회전시킨 $t-s$ 좌표계를 생각하자. 그렇다면, $(x, y)$ 와 $(t, x)$ 의 관계는 아래와 같다.
 
@@ -179,7 +228,7 @@ $$
 라돈 변환을 생각하면, 
 
 $$
-p_\theta (t) = \int f(t, s)\, ds
+p_\theta (t) = \int \mu(t, s)\, ds
 $$
 
 이며 @eq-fourier_transform_of_projection 로 부터
@@ -187,18 +236,18 @@ $$
 $$
 \begin{aligned}
 S_\theta (\rho) &= \int p_\theta (t) e^{-2\pi i \rho t}\, dt \\
-&=\int \left[\int f(t, s) \, ds\right] \, e^{-2\pi i \rho t}\, dt \\
-&= \iint f(x, y) e^{-2 \pi i \rho ( x \cos\theta + y\sin \theta) } \, dx\, dy
+&=\int \left[\int \mu (t, s) \, ds\right] \, e^{-2\pi i \rho t}\, dt \\
+&= \iint \mu (x, y) e^{-2 \pi i \rho ( x \cos\theta + y\sin \theta) } \, dx\, dy
 \end{aligned} 
 $$ {#eq-fourier_transform_of_slice_2}
 
 임을 안다. 여기서 $u = \rho \cos \theta,\, v = \rho \sin \theta$ 라고 하면, 
 
 $$
-S_\theta (\rho) = \iint f(x,  y) e^{-2\pi i (ux + vy)}\, dx\, dy = \mathfrak{F}[f](u, v) = F(\rho \cos \theta, \rho \sin \theta)
+S_\theta (\rho) = \iint \mu(x,  y) e^{-2\pi i (ux + vy)}\, dx\, dy = \mathfrak{F}[\mu](u, v) = \hat{\mu}(\rho \cos \theta, \rho \sin \theta)
 $$ {#eq-fourier_transform_of_slice_3}
 
-이다. 이것이 바로 **Fourier Slice Theorem** 이다. Fourier slice theorem 은 sinogram 으로부터 $f(x, y)$ 를 구할 수 있음을, 즉 역 라돈 변환이 가능함을 보장한다.
+이다. 즉 우리는 프로젝선의 $\mu(x,\,y)$ 의 푸리에 변환인 $\hat{\mu}(u,\,v)$ 를 얻었으며, 따라서 $\mu(x,\,y)$ 를 얻을 수 있다. 이것이 바로 **Fourier Slice Theorem** 이다. Fourier slice theorem 은 sinogram 으로부터 $\mu(x, y)$ 를 구할 수 있음을, 즉 역 라돈 변환이 가능함을 보장한다.
 
 <center>
 
@@ -208,7 +257,9 @@ $$ {#eq-fourier_transform_of_slice_3}
 
 </br>
 
-## Filtered back projeciton
+## Filtered Back Projeciton
+
+위의 $\mu(x,\,y)$ 를 $f(x,\,y)$ 로, $\mathfrak{F}[\mu](u,\,v) = F(u,\,v)$ 로 표기하기로 하자.
 
 ::: {.callout-note icon="false"}
 
@@ -216,29 +267,30 @@ $$ {#eq-fourier_transform_of_slice_3}
 
 - $f(x, y)$ 가 함수라고 하자. 그렇다면 우리는 임의의 projeciton $p_\theta(t)$ 를 얻을 수 있으며, 이를 통해 $\mathfrak{F}[f](u, v)$ 를 구할 수 있다.   
 
-- 우리가 토모그래피를 통해 측정하는 것은 $\theta = \theta_1,\, \theta_2,\,\theta_3, \ldots$ 에 대한 $p_\theta (t)$ 이다. 그리고 푸리에 변환을 통해 $S_\theta (\omega)$ 를 얻을 수 있다.
+- 우리가 토모그래피를 통해 측정하는 것은 $\theta = \theta_1,\, \theta_2,\,\theta_3, \ldots$ 에 대한 $p_\theta (t)$ 이다. 그리고 푸리에 변환을 통해 $S_\theta (\rho)$ 를 얻을 수 있다.
 
-- $S_\theta (\omega) = F(\omega \cos\theta, \omega \sin \theta)$ 와 같다.   
+- $S_\theta (\rho) = F(\rho \cos\theta, \rho \sin \theta)$ 와 같다.   
 
 :::
-
 
 </br>
 
 ### Filtered projection
 
+$f(x,\,y)$ 에 대한 푸리에 변환 $F(u,\,v) = \mathfrak{F}[f](u,\,v)$ 를 생각하자. 그리고 $F(u,\,v)$ 에 대한 푸리에 역변환을 극좌표계 $(\rho,\,\theta)$ 에서 수행하는 것을 생각하자.
+
 $$
 \begin{aligned}
-f(x, y) &= \iint F(u, v) e^{2\pi i (ux + yv)}\, du\, dv \\
-&= \int_0^{2\pi}\int_0^{\infty} F(\rho \cos \theta, \rho \sin \theta)\, e^{2\pi i (\rho x \cos \theta + \rho y \sin \theta)} \, \rho\,   d\rho \, d\theta 
+f(x, y) &= \iint F(u, v) e^{2\pi i (ux + yv)}\, du\, dv \qquad (\text{to polar coordinate})\\
+&= \int_0^{2\pi}\int_0^{\infty} F(\rho \cos \theta, \rho \sin \theta)\, e^{2\pi i (\rho x \cos \theta + \rho y \sin \theta)} \, \rho\,   d\rho \, d\theta.
 \end{aligned}
 $$ {#eq-filtered_projeciton_1}
 
-이며 $\theta$ 에 대한 적분을 $[0, \pi)$, $[\pi, 2\pi)$ 구간으로 나누어 생각해 보자. 
+위 식에서 $\theta$ 에 대한 적분을 $[0, \pi)$, $[\pi, 2\pi)$ 구간으로 나누어 생각해 보자. 
 
 - Projection $p_\theta (t)$ 를 생각해보자. $\theta + \pi$ 만큼 회전시킨 projection 은 $\theta$ 에 대한 projection 과 같은 선상의 적분이며 단지 $t$ 값이 $-t$ 로 바뀔 뿐이다. 따라서 $p_{\theta + \pi} (t) = p_\theta(-t)$ 이다.
 
-- 식 ($6$) 으로부터, $S_{\theta + \pi}(\rho) = S_\theta (-\rho)$ 임을 안다. 따라서 다음이 성립한다.
+- @eq-fourier_transform_of_slice_2 으로부터, $S_{\theta + \pi}(\rho) = S_\theta (-\rho)$ 임을 안다. 따라서 다음이 성립한다.
 $$
 F(\rho \cos (\theta + \pi), \rho \sin (\theta + \pi)) = F(-\rho \cos \theta, -\rho \sin\theta) 
 $$ {#eq-filtered_projection_2}
@@ -250,28 +302,33 @@ $$ {#eq-filtered_projection_2}
 
 $$
 \begin{aligned}
-\int_\pi^{2\pi}\int_0^\infty &F(\rho \cos \theta, \rho \sin \theta)\,  e^{2\pi i (\rho x \cos \theta + \rho y \sin \theta)} \, \rho\,   d\rho \, d\theta\\
-&=\int_0^\pi \int_0^\infty F(-\rho\cos \phi, -\rho \sin \phi) e^{-2\pi i(\rho x \cos \phi +\rho y \sin\phi)} \, \rho\, d\rho \, d\phi \\
-& = \int_0^\pi \int_{-\infty}^0 F(\rho \cos \phi,  \rho \sin \phi) e^{2\pi i (\rho x \cos \theta + \rho y \sin \theta)} (-\rho)\, d\rho \,d\phi 
+\int_\pi^{2\pi}\int_0^\infty &F(\rho \cos \theta, \rho \sin \theta)\,  e^{2\pi i (\rho x \cos \theta + \rho y \sin \theta)} \, \rho\,   d\rho \, d\theta \\
+&= \int_0^{\pi}\int_0^\infty F(\rho \cos \theta, \rho \sin \theta)\,  e^{2\pi i (\rho x \cos \theta + \rho y \sin \theta)} \, \rho\,   d\rho \, d\theta \\
+&\qquad\qquad  + \int_\pi^{2\pi}\int_0^\infty F(\rho \cos \theta, \rho \sin \theta)\,  e^{2\pi i (\rho x \cos \theta + \rho y \sin \theta)} \, \rho\,   d\rho \, d\theta\\
+&= \int_0^{\pi}\int_0^\infty F(\rho \cos \theta, \rho \sin \theta)\,  e^{2\pi i (\rho x \cos \theta + \rho y \sin \theta)} \, \rho\,   d\rho \, d\theta\\
+&\qquad\qquad  + \int_0^{\pi}\int_0^\infty F(-\rho \cos \theta, -\rho \sin \theta)\,  e^{-2\pi i (\rho x \cos \theta + \rho y \sin \theta)} \, \rho\,   d\rho \, d\theta\\
+&=\int_0^{\pi}\int_0^\infty F(\rho \cos \theta, \rho \sin \theta)\,  e^{2\pi i (\rho x \cos \theta + \rho y \sin \theta)} \, \rho\,   d\rho \, d\theta\\
+&\qquad\qquad  + \int_0^{\pi}\int_{-\infty}^0 F(\rho \cos \theta, \rho \sin \theta)\,  e^{2\pi i (\rho x \cos \theta + \rho y \sin \theta)} \, (-\rho)\,   d\rho \, d\theta\\
+&= \int_0^{\pi}\int_{-\infty}^\infty F(\rho \cos \theta, \rho \sin \theta)\,  e^{2\pi i (\rho x \cos \theta + \rho y \sin \theta)} \, |\rho|\,   d\rho \, d\theta\\
 \end{aligned}
 $$ {#eq-filtered_projection_3}
 
-이다. @eq-fourier_transform_of_slice_3 과 @eq-filtered_projection_3 로부터, 그리고 Fourier slice theorem 으로부터, 
+이다. 위 식과 Fourier slice theorem (@eq-fourier_transform_of_slice_3) 으로부터, 
 
 $$
 \begin{aligned}
 f(x, y) &=\int_0^{ \pi} \int_{-\infty}^\infty F(\rho \cos\theta, \rho \sin \theta) e^{2\pi i \rho(x \cos \theta + y \sin \theta)}|\rho| \, d\rho \, d\theta \\
-&= \int_0^\pi \left[ \int_{0}^\infty S_\theta (\rho) |\rho| e^{2\pi i \rho (x\cos \theta + y \sin \theta)}\, d\rho \right] \, d\theta
+&= \int_0^\pi \left[ \int_{-\infty}^\infty S_\theta (\rho) |\rho| e^{2\pi i \rho (x\cos \theta + y \sin \theta)}\, d\rho \right] \, d\theta
 \end{aligned} 
 $$ {#eq-filtered_back_projection}
 
 를 얻는다. 우리는 $t=x \cos \theta + y \sin \theta$ 가 $\theta$ 만큼 회전시켰을때의 projection 이 독립변수임을(혹은 좌표값임을) 알고 있다. 따라서 
 
 $$
-Q_\theta (t) = \int_{0}^\infty S_\theta(\rho) |\rho| e^{2\pi i \rho t} \, d\rho 
+Q_\theta (t) := \int_{-\infty}^\infty S_\theta(\rho) |\rho| e^{2\pi i \rho t} \, d\rho 
 $$ {#eq-fourier_transform_of_slice_4}
 
-라고 정의하자. 그렇다면
+라고 정의하면
 
 $$
 f(x, y) = \int_0 ^\pi  Q_\theta (t = x \cos \theta + y \sin \theta) \,d\theta 
@@ -304,9 +361,9 @@ $$
 
 ### Low frequency window
 
-@eq-fourier_transform_of_slice_4 의 $|\rho|$ 는 high-pass filter 역할을 하며(이를 *Lamp 필터* 혹은 *Ram-Lack 필터* 라고 한다) 이로인해 high frequency 영역에서의 노이즈에 매우 취약하게 된다. 이로인해 $Q_\theta (t)$ 를 계산할 때 window function 이라고 불리우는 high pass filter 를 곱하여 푸리에 변환을 수행한다. 각 필터의 모양은 아래 @fig-fbp_window 와 같다.
+@eq-fourier_transform_of_slice_4 의 $|\rho|$ 는 high-pass filter 역할을 하며(이를 *Lamp 필터* 혹은 *Ram-Lack 필터* 라고 한다) 이로인해 high frequency 영역에서의 노이즈에 매우 취약하게 된다. 이로인해 $Q_\theta (t)$ 를 계산할 때 window function 이라고 불리우는 low pass filter 를 곱하여 푸리에 변환을 수행한다. 각 필터의 모양은 아래 @fig-fbp_window 와 같다.
 
-![Window functions](figures/tomography/fbp_window.png){#fig-fbp_window width=600}
+![Window functions](figures/fourier_filter.png){#fig-fbp_window width=600}
 
 </br>
 
