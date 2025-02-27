@@ -13,6 +13,7 @@ book:
     - src/data_processing.qmd
     - src/centering.qmd
     - src/ring_artifact.qmd
+    - src/iterative_method.qmd
     - summary.qmd
     - references.qmd
 

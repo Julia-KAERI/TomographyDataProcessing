@@ -173,8 +173,14 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../src/iterative_method.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">반복법을 통한 Reconstruction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -212,11 +218,6 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#filtered-projection" id="toc-filtered-projection" class="nav-link" data-scroll-target="#filtered-projection"><span class="header-section-number">4.1</span> Filtered projection</a></li>
   <li><a href="#low-frequency-window" id="toc-low-frequency-window" class="nav-link" data-scroll-target="#low-frequency-window"><span class="header-section-number">4.2</span> Low frequency window</a></li>
-  </ul></li>
-  <li><a href="#대수적인-reconstruction" id="toc-대수적인-reconstruction" class="nav-link" data-scroll-target="#대수적인-reconstruction"><span class="header-section-number">5</span> 대수적인 Reconstruction</a>
-  <ul class="collapse">
-  <li><a href="#art-algebraic-reconstruction-technique" id="toc-art-algebraic-reconstruction-technique" class="nav-link" data-scroll-target="#art-algebraic-reconstruction-technique"><span class="header-section-number">5.1</span> ART (Algebraic reconstruction technique)</a></li>
-  <li><a href="#sart-simultaneous-art" id="toc-sart-simultaneous-art" class="nav-link" data-scroll-target="#sart-simultaneous-art"><span class="header-section-number">5.2</span> SART (Simultaneous ART)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -565,63 +566,18 @@ f(x, y) = C \cdot \left(\sum_\theta Q_\theta (t=x \cos \theta + y \sin \theta)\r
 </section>
 <section id="low-frequency-window" class="level3" data-number="4.2">
 <h3 data-number="4.2" class="anchored" data-anchor-id="low-frequency-window"><span class="header-section-number">4.2</span> Low frequency window</h3>
-<p><a href="#eq-fourier_transform_of_slice_4" class="quarto-xref">식&nbsp;<span>13</span></a> 의 <span class="math inline">\(|\rho|\)</span> 는 high-pass filter 역할을 하며(이를 <em>Lamp 필터</em> 혹은 <em>Ram-Lack 필터</em> 라고 한다) 이로인해 high frequency 영역에서의 노이즈에 매우 취약하게 된다. 이로인해 <span class="math inline">\(Q_\theta (t)\)</span> 를 계산할 때 window function 이라고 불리우는 low pass filter 를 곱하여 푸리에 변환을 수행한다. 각 필터의 모양은 아래 <a href="#fig-fbp_window" class="quarto-xref">그림&nbsp;<span>7</span></a> 와 같다.</p>
+<p><a href="#eq-fourier_transform_of_slice_4" class="quarto-xref">식&nbsp;<span>13</span></a> 의 <span class="math inline">\(|\rho|\)</span> 는 high-pass filter 역할을 하며(이를 <em>Lamp 필터</em> 혹은 <em>Ram-Lack 필터</em> 라고 한다) 이로인해 high frequency 영역에서의 노이즈에 매우 취약하게 된다. 이로인해 <span class="math inline">\(Q_\theta (t)\)</span> 를 계산할 때 window function 이라고 불리우는 low pass filter 를 곱하여 푸리에 변환을 수행한다. 각 필터의 모양은 아래 <a href="#fig-fbp_window" class="quarto-xref">그림&nbsp;<span>7</span></a> 와 같다. 아래 그림은 각 필터를 Ramp 필터와 convolution 한 것을 푸리에 변환하여 주파수 영역에서 그린 것이다.</p>
 <div id="fig-fbp_window" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-fbp_window-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fourier_filter.png" class="img-fluid figure-img" width="600">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fbp_window-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-그림&nbsp;7: Window functions
+그림&nbsp;7: Ramp 필터와 window 필터의 콘볼루션을 푸리에 변환한 결과로서의 필터
 </figcaption>
 </figure>
 </div>
 <p><br></p>
-</section>
-</section>
-<section id="대수적인-reconstruction" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="대수적인-reconstruction"><span class="header-section-number">5</span> 대수적인 Reconstruction</h2>
-<div id="fig-rec_algebraic_1" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-rec_algebraic_1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/tomography/fig-algebraic_1.png" class="img-fluid figure-img" width="450">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rec_algebraic_1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-그림&nbsp;8: 대수적인 reconstruction
-</figcaption>
-</figure>
-</div>
-<p>토모그래피를 수행하는 전체 영역이 <span class="math inline">\(N_1 \times N_2\)</span> 의 그리드라고 하자. 우리는 이 때 그리드 내의 선형 감쇄 계수 <span class="math inline">\(\mu(x,\,y)\)</span> 는 동일하다고 가정한다. 그리드마다 인덱스를 부여하여 <span class="math inline">\(\mu_j\)</span> <span class="math inline">\((j=1,\,2,\ldots,\,N_1 \times N_2)\)</span> 라고 하자. 중성자나 X 선원에서 발생하는 방사선이 물질을 투과하여 그 결과로 감소하여 검출기 픽셀 <span class="math inline">\(i\)</span> 번째 pixel 에 검출되었다고 하자. <a href="#eq-beam_intensity_formula" class="quarto-xref">식&nbsp;<span>4</span></a> 에 따라 <span class="math inline">\(i\)</span> 번째 pixel 에 검출된 카운트 수는</p>
-<p><span class="math display">\[
--\ln \left(\dfrac{I_i}{I_0}\right) = \sum_{j} w_{ij} \mu_j
-\]</span></p>
-<p>가 된다. <span class="math inline">\(d_i = -\ln \left(\dfrac{I_i}{I_0}\right)\)</span> 라고 하면, <span class="math inline">\(d_i = \sum_{j} w_{ij} \mu_j\)</span> 이다. 토모그래피에서 slice 를 <span class="math inline">\(\theta = \theta_1,\ldots,\,\theta_m\)</span> 만큼 얻었다고 하자. 이제 인덱스 <span class="math inline">\(i\)</span> 를 검출기 뿐만 아니라 slice 에 대한 인덱스로 하자. 즉 검출기 픽셀이 <span class="math inline">\(N_d\)</span> 일 때 <span class="math inline">\(d_1,\ldots,\,d_{N_d}\)</span> 는 <span class="math inline">\(\theta_1\)</span> slice 에 대한 검출기 픽셀 값을 처리한(<span class="math inline">\(-\ln (I_i/I_0)\)</span>) 값이고 <span class="math inline">\(d_{N_d+1},\ldots,\, d_{N_d\times 2}\)</span> 는 <span class="math inline">\(\theta_2\)</span> 에 대한 값이라고 하자. 그렇다면</p>
-<p><span class="math display">\[
-\boldsymbol{d} = \begin{bmatrix} d_1 &amp; d_2 &amp; \cdots &amp; d_{N_d\times m}\end{bmatrix}^T
-\]</span></p>
-<p>를 정의 할 수 있다. 또한 <span class="math inline">\(w_{ij}\)</span> 의 index <span class="math inline">\(i\)</span> 도 검출기 픽셀과 slice 회전에 대한 인덱스에 대해 <span class="math inline">\(\mu_j\)</span> 가 <span class="math inline">\(d_j\)</span> 에 기여하는 정도 라고 볼 수 있다. 그렇다면 우리는 아래와 같은 선형방정식을 얻는다.</p>
-<p><span id="eq-algebraic_equation"><span class="math display">\[
-\boldsymbol{\Omega \mu} = \boldsymbol{d}.
-\tag{15}\]</span></span></p>
-<p>즉 reconstruction 문제가 선형방정식 문제가 된다. 이 때 <span class="math inline">\(\omega\)</span> 는 [검출기 픽셀 갯수 <span class="math inline">\(\times\)</span> slice 수] 만큼의 행과 [Recustruct 되는 이미지의 그리드 수] 만큼의 열을 갖는 행렬이다. 보통 이미지의 그리드 수는 검출기 픽셀 수의 제곱이며 검출기 픽셀 수는 수백 ~ 수천이며 , slice 수 역시 수백 ~ 수천 정도 이므로, <span class="math inline">\(\boldsymbol{\Omega}\)</span> 는 수만 <span class="math inline">\(\times\)</span> 수만 에서 수백만 <span class="math inline">\(\times\)</span> 수백만 정도의 크기를 갖는 매우 큰 행렬이다. 물론 대부분의 성분이 <span class="math inline">\(0\)</span> 인 희소행력(spase matrix) 이다.</p>
-<p><a href="#eq-algebraic_equation" class="quarto-xref">식&nbsp;<span>15</span></a> 을 보자. 이것이 유일한 해를 갖는 경우는 <span class="math inline">\(\boldsymbol{A}\)</span> 가 정사각 행렬이며 <span class="math inline">\(\det (\boldsymbol{A}) \neq 0\)</span> 일 때 뿐이다. 그러나 일반적인 경우에 <span class="math inline">\(\boldsymbol{A}\)</span> 는 정사각 행렬이 아니다. 이 경우 일반화된 역행렬 방법이 사용된다.</p>
-<p><br></p>
-<section id="art-algebraic-reconstruction-technique" class="level3" data-number="5.1">
-<h3 data-number="5.1" class="anchored" data-anchor-id="art-algebraic-reconstruction-technique"><span class="header-section-number">5.1</span> ART (Algebraic reconstruction technique)</h3>
-<p><span class="math display">\[
-\boldsymbol{x}^{(k+1)} = \boldsymbol{x}^{(k)} + \lambda_m \dfrac{1}{\boldsymbol{A}_{1:}^T \boldsymbol{A}_{1:}} (\boldsymbol{b}_i - \boldsymbol{A}_{i:}\boldsymbol{x}^{(k)}) \boldsymbol{A}_{i:}
-\]</span></p>
-<p>ㅋ <br></p>
-</section>
-<section id="sart-simultaneous-art" class="level3" data-number="5.2">
-<h3 data-number="5.2" class="anchored" data-anchor-id="sart-simultaneous-art"><span class="header-section-number">5.2</span> SART (Simultaneous ART)</h3>
-<p><span class="math display">\[
-\boldsymbol{x}^{(k+1)} = \boldsymbol{x}^{(k)} + \lambda_m \boldsymbol{V}^{-1} \boldsymbol{A}^T \boldsymbol{W} (\boldsymbol{b}-\boldsymbol{Ax}^{(k)})
-\]</span></p>
-<p>이 때 <span class="math inline">\(\boldsymbol{V}\)</span> 와 <span class="math inline">\(\boldsymbol{W}\)</span> 는 대각행렬로 각각의 대각성분은 다음과 같다.</p>
-<p><span class="math display">\[
-\boldsymbol{V}_{jj} = \sum_{i=1}^M |\boldsymbol{A}_{ij}|, \qquad \boldsymbol{W}_{ii} = \dfrac{1}{\sum_{j=1}^N |\boldsymbol{A}_{ij}|}
-\]</span></p>
 
 
 </section>

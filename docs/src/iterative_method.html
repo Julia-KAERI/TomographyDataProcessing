@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tomography - 5&nbsp; Ring 아티팩트 제거</title>
+<title>Tomography - 6&nbsp; 반복법을 통한 Reconstruction</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -50,8 +30,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../src/iterative_method.html" rel="next">
-<link href="../src/centering.html" rel="prev">
+<link href="../summary.html" rel="next">
+<link href="../src/ring_artifact.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -130,7 +110,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../src/ring_artifact.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Ring 아티팩트 제거</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../src/iterative_method.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">반복법을 통한 Reconstruction</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -187,13 +167,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../src/ring_artifact.html" class="sidebar-item-text sidebar-link active">
+  <a href="../src/ring_artifact.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Ring 아티팩트 제거</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../src/iterative_method.html" class="sidebar-item-text sidebar-link">
+  <a href="../src/iterative_method.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">반복법을 통한 Reconstruction</span></span></a>
   </div>
 </li>
@@ -219,10 +199,10 @@ window.Quarto = {
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#raven1998" id="toc-raven1998" class="nav-link active" data-scroll-target="#raven1998"><span class="header-section-number">5.1</span> <span class="citation" data-cites="Raven1998">Raven (1998)</span></a></li>
-  <li><a href="#titarenko20101489" id="toc-titarenko20101489" class="nav-link" data-scroll-target="#titarenko20101489"><span class="header-section-number">5.2</span> <span class="citation" data-cites="TITARENKO20101489">Titarenko, Withers, and Yagola (2010)</span></a>
+  <li><a href="#대수적인-reconstruction" id="toc-대수적인-reconstruction" class="nav-link active" data-scroll-target="#대수적인-reconstruction"><span class="header-section-number">1</span> 대수적인 Reconstruction</a>
   <ul class="collapse">
-  <li><a href="#regulaized-solution" id="toc-regulaized-solution" class="nav-link" data-scroll-target="#regulaized-solution"><span class="header-section-number">5.2.1</span> Regulaized solution</a></li>
+  <li><a href="#art-algebraic-reconstruction-technique" id="toc-art-algebraic-reconstruction-technique" class="nav-link" data-scroll-target="#art-algebraic-reconstruction-technique"><span class="header-section-number">1.1</span> ART (Algebraic reconstruction technique)</a></li>
+  <li><a href="#sart-simultaneous-art" id="toc-sart-simultaneous-art" class="nav-link" data-scroll-target="#sart-simultaneous-art"><span class="header-section-number">1.2</span> SART (Simultaneous ART)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -232,7 +212,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Ring 아티팩트 제거</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">반복법을 통한 Reconstruction</span></h1>
 </div>
 
 
@@ -249,53 +229,60 @@ window.Quarto = {
 </header>
 
 
-<section id="raven1998" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="raven1998"><span class="header-section-number">5.1</span> <span class="citation" data-cites="Raven1998">Raven (<a href="../references.html#ref-Raven1998" role="doc-biblioref">1998</a>)</span></h2>
-<p>사이노그램 <span class="math inline">\(S[\theta,\,x]\)</span> 에 대해 푸리에 변환</p>
+<div class="hidden">
+<p>% %</p>
+%
 <p><span class="math display">\[
-\tilde{S}[u, v] = \mathfrak{F}[S[\theta, x]]
+\DeclarePairedDelimiters{\set}{\{}{\}}
+\DeclareMathOperator*{\argmax}{argmax}
 \]</span></p>
-<p>을 생각하자. 검출기 픽셀의 결함이 있다면 이것은 high frequency <span class="math inline">\(u\)</span> 의 spike 로 나타난다. 반면에 miscalibration 이 있다면 <span class="math inline">\(u\)</span> 의 넓은 영역에 걸쳐서 나타난다.</p>
-<p>버터워스(Butterworth) low-pass filter <span class="math inline">\(H(u, v)\)</span> 를 사용한다.</p>
-<p><span id="eq-butterworth_low_pass_filter"><span class="math display">\[
-H(u, v) = \left \{\begin{array}{ll} \dfrac{1}{1+ (u/u_0)^{2n}} \qquad &amp; \text{if }|v|\le v_0 \\ 1 &amp; \text{otherwise}\end{array}\right.
-\tag{5.1}\]</span></span></p>
+</div>
 <p><br></p>
+<section id="대수적인-reconstruction" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="대수적인-reconstruction"><span class="header-section-number">1</span> 대수적인 Reconstruction</h2>
+<div id="fig-rec_algebraic_1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rec_algebraic_1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/tomography/fig-algebraic_1.png" class="img-fluid figure-img" width="450">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rec_algebraic_1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+그림&nbsp;1: 대수적인 reconstruction
+</figcaption>
+</figure>
+</div>
+<p>토모그래피를 수행하는 전체 영역이 <span class="math inline">\(N_1 \times N_2\)</span> 의 그리드라고 하자. 우리는 이 때 그리드 내의 선형 감쇄 계수 <span class="math inline">\(\mu(x,\,y)\)</span> 는 동일하다고 가정한다. 그리드마다 인덱스를 부여하여 <span class="math inline">\(\mu_j\)</span> <span class="math inline">\((j=1,\,2,\ldots,\,N_1 \times N_2)\)</span> 라고 하자. 중성자나 X 선원에서 발생하는 방사선이 물질을 투과하여 그 결과로 감소하여 검출기 픽셀 <span class="math inline">\(i\)</span> 번째 pixel 에 검출되었다고 하자. <a href="theory.html#eq-beam_intensity_formula" class="quarto-xref">식&nbsp;<span>4</span></a> 에 따라 <span class="math inline">\(i\)</span> 번째 pixel 에 검출된 카운트 수는</p>
+<p><span class="math display">\[
+-\ln \left(\dfrac{I_i}{I_0}\right) = \sum_{j} w_{ij} \mu_j
+\]</span></p>
+<p>가 된다. <span class="math inline">\(d_i = -\ln \left(\dfrac{I_i}{I_0}\right)\)</span> 라고 하면, <span class="math inline">\(d_i = \sum_{j} w_{ij} \mu_j\)</span> 이다. 토모그래피에서 slice 를 <span class="math inline">\(\theta = \theta_1,\ldots,\,\theta_m\)</span> 만큼 얻었다고 하자. 이제 인덱스 <span class="math inline">\(i\)</span> 를 검출기 뿐만 아니라 slice 에 대한 인덱스로 하자. 즉 검출기 픽셀이 <span class="math inline">\(N_d\)</span> 일 때 <span class="math inline">\(d_1,\ldots,\,d_{N_d}\)</span> 는 <span class="math inline">\(\theta_1\)</span> slice 에 대한 검출기 픽셀 값을 처리한(<span class="math inline">\(-\ln (I_i/I_0)\)</span>) 값이고 <span class="math inline">\(d_{N_d+1},\ldots,\, d_{N_d\times 2}\)</span> 는 <span class="math inline">\(\theta_2\)</span> 에 대한 값이라고 하자. 그렇다면</p>
+<p><span class="math display">\[
+\boldsymbol{d} = \begin{bmatrix} d_1 &amp; d_2 &amp; \cdots &amp; d_{N_d\times m}\end{bmatrix}^T
+\]</span></p>
+<p>를 정의 할 수 있다. 또한 <span class="math inline">\(w_{ij}\)</span> 의 index <span class="math inline">\(i\)</span> 도 검출기 픽셀과 slice 회전에 대한 인덱스에 대해 <span class="math inline">\(\mu_j\)</span> 가 <span class="math inline">\(d_j\)</span> 에 기여하는 정도 라고 볼 수 있다. 그렇다면 우리는 아래와 같은 선형방정식을 얻는다.</p>
+<p><span id="eq-algebraic_equation"><span class="math display">\[
+\boldsymbol{\Omega \mu} = \boldsymbol{d}.
+\tag{1}\]</span></span></p>
+<p>즉 reconstruction 문제가 선형방정식 문제가 된다. 이 때 <span class="math inline">\(\omega\)</span> 는 [검출기 픽셀 갯수 <span class="math inline">\(\times\)</span> slice 수] 만큼의 행과 [Recustruct 되는 이미지의 그리드 수] 만큼의 열을 갖는 행렬이다. 보통 이미지의 그리드 수는 검출기 픽셀 수의 제곱이며 검출기 픽셀 수는 수백 ~ 수천이며 , slice 수 역시 수백 ~ 수천 정도 이므로, <span class="math inline">\(\boldsymbol{\Omega}\)</span> 는 수만 <span class="math inline">\(\times\)</span> 수만 에서 수백만 <span class="math inline">\(\times\)</span> 수백만 정도의 크기를 갖는 매우 큰 행렬이다. 물론 대부분의 성분이 <span class="math inline">\(0\)</span> 인 희소행력(spase matrix) 이다.</p>
+<p><a href="#eq-algebraic_equation" class="quarto-xref">식&nbsp;<span>1</span></a> 을 보자. 이것이 유일한 해를 갖는 경우는 <span class="math inline">\(\boldsymbol{A}\)</span> 가 정사각 행렬이며 <span class="math inline">\(\det (\boldsymbol{A}) \neq 0\)</span> 일 때 뿐이다. 그러나 일반적인 경우에 <span class="math inline">\(\boldsymbol{A}\)</span> 는 정사각 행렬이 아니다. 이 경우 일반화된 역행렬 방법이 사용된다.</p>
+<p><br></p>
+<section id="art-algebraic-reconstruction-technique" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="art-algebraic-reconstruction-technique"><span class="header-section-number">1.1</span> ART (Algebraic reconstruction technique)</h3>
+<p><span class="math display">\[
+\boldsymbol{x}^{(k+1)} = \boldsymbol{x}^{(k)} + \lambda_m \dfrac{1}{\boldsymbol{A}_{1:}^T \boldsymbol{A}_{1:}} (\boldsymbol{b}_i - \boldsymbol{A}_{i:}\boldsymbol{x}^{(k)}) \boldsymbol{A}_{i:}
+\]</span></p>
+<p>ㅋ <br></p>
 </section>
-<section id="titarenko20101489" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="titarenko20101489"><span class="header-section-number">5.2</span> <span class="citation" data-cites="TITARENKO20101489">Titarenko, Withers, and Yagola (<a href="../references.html#ref-TITARENKO20101489" role="doc-biblioref">2010</a>)</span></h2>
-<p>하나의 사이노그램 <span class="math inline">\(S[\theta, x]\)</span> 를 생각하자. 이상적인 사이노그램은 연속이지만 실제 측정값은 이산적이므로 <span class="math inline">\(s_{ij}= S[\theta_i, x_j]\)</span> 라고 쓸 수 있다.</p>
-<p>여러 실험적 오차로 인해 샘플에 대해 원래 시노그램이 가져야 할 값 <span class="math inline">\(s_{ij}\)</span> 와 실제 측정된 값 <span class="math inline">\(\tilde{s}_{ij}\)</span> 사이에는 오차가 있다. 특히 링 아티팩트를 주는 픽셀마다의 불균일성이 원인이라면 그것은 <span class="math inline">\(\theta_i\)</span> 에 의존하지 않고 <span class="math inline">\(x_j\)</span> 에만 의존한다. 이것을 <span class="math inline">\(q_j=q(x_j)\)</span> 라고 하자. 즉</p>
-<p><span id="eq-tirarenko2010_1"><span class="math display">\[
-\tilde{s}_{ij} = s_{ij} - q_j.
-\tag{5.2}\]</span></span></p>
-<p><br></p>
-<section id="regulaized-solution" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="regulaized-solution"><span class="header-section-number">5.2.1</span> Regulaized solution</h3>
-<p>우리는 <span class="math inline">\(S[\theta,\,x]\)</span> 가 매끄럽다고(원문에서는 smooth, 수학적인 의미에서 무한번 미분 가능하다는 의미에서의 smooth 인가?) 가정한다. Finite dimensional approxmation 에 따라 아래와 같이 정해지는 functional <span class="math inline">\(G[q]\)</span> 를 최소화 해야 한다.</p>
-<p><span id="eq-tirarenko2010_2"><span class="math display">\[
-G[q] = \sum_{i=1}^{N_\theta} \sum_{j=1}^{N_x} \left| s_{ij}- s_{i, j+1}\right|^2 = \sum_{i=1}^{N_\theta} \sum_{j=1}^{N_x} \left| \tilde{s}_{ij} = \tilde{s}_{i, j+1} + q_j - q_{j+1}\right|^2
-\tag{5.3}\]</span></span></p>
-<p>여기서 <span class="math inline">\(N_\theta\)</span> 는 회전각의 갯수이며 <span class="math inline">\(N_x\)</span> 는 픽셀의 갯수이다. 여기서 해 <span class="math inline">\(q= \begin{bmatrix} q_1 &amp; \cdots &amp; q_{N_x}\end{bmatrix}^T\)</span> 는 유일하지 않은데 임의의 상수 <span class="math inline">\(c\)</span> 에 대해 <span class="math inline">\(G[q] = G[q+c]\)</span> 이기 때문이다.</p>
-<p>여기서 regularization 을 사용하는데 <span class="math inline">\(q\)</span> 는 기본적으로 실험 오차를 나타내므로</p>
+<section id="sart-simultaneous-art" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="sart-simultaneous-art"><span class="header-section-number">1.2</span> SART (Simultaneous ART)</h3>
 <p><span class="math display">\[
-N_\theta \|q\|^2 = N_\theta \left(\sum_{j} |q_j|^2\right)
+\boldsymbol{x}^{(k+1)} = \boldsymbol{x}^{(k)} + \lambda_m \boldsymbol{V}^{-1} \boldsymbol{A}^T \boldsymbol{W} (\boldsymbol{b}-\boldsymbol{Ax}^{(k)})
 \]</span></p>
-<p>를 최소화 하도록 한다. 즉 우리가 최소화 하는것은 <span class="math inline">\(G[q]\)</span> 가 아니라 어떤 regularization parameter <span class="math inline">\(\lambda\)</span> 에 대해</p>
+<p>이 때 <span class="math inline">\(\boldsymbol{V}\)</span> 와 <span class="math inline">\(\boldsymbol{W}\)</span> 는 대각행렬로 각각의 대각성분은 다음과 같다.</p>
 <p><span class="math display">\[
-M_\lambda [q] = G[q] + \lambda N_q \|q\|^2
+\boldsymbol{V}_{jj} = \sum_{i=1}^M |\boldsymbol{A}_{ij}|, \qquad \boldsymbol{W}_{ii} = \dfrac{1}{\sum_{j=1}^N |\boldsymbol{A}_{ij}|}
 \]</span></p>
-<p>를 최소화 하는 <span class="math inline">\(\lambda\)</span> 를 찾는다. 이 때 당연히 <span class="math inline">\(\lambda &gt; 0\)</span> 이어야 한다.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-Raven1998" class="csl-entry" role="listitem">
-Raven, Carsten. 1998. <span>“Numerical Removal of Ring Artifacts in Microtomography.”</span> <em>Review of Scientific Instruments</em> 69: 2978–80. <a href="https://api.semanticscholar.org/CorpusID:53389111">https://api.semanticscholar.org/CorpusID:53389111</a>.
-</div>
-<div id="ref-TITARENKO20101489" class="csl-entry" role="listitem">
-Titarenko, Sofya, Philip J. Withers, and Anatoly Yagola. 2010. <span>“An Analytical Formula for Ring Artefact Suppression in x-Ray Tomography.”</span> <em>Applied Mathematics Letters</em> 23 (12): 1489–95. https://doi.org/<a href="https://doi.org/10.1016/j.aml.2010.08.022">https://doi.org/10.1016/j.aml.2010.08.022</a>.
-</div>
-</div>
 </section>
 </section>
 
@@ -711,13 +698,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../src/centering.html" class="pagination-link" aria-label="회전 중심 (COR)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">회전 중심 (COR)</span></span>
+      <a href="../src/ring_artifact.html" class="pagination-link" aria-label="Ring 아티팩트 제거">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Ring 아티팩트 제거</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../src/iterative_method.html" class="pagination-link" aria-label="반복법을 통한 Reconstruction">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">반복법을 통한 Reconstruction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../summary.html" class="pagination-link" aria-label="Summary">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

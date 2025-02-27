@@ -22,5 +22,8 @@
   },
   "src/theory.qmd": {
     "theory.html": "80980de1"
+  },
+  "src/iterative_method.qmd": {
+    "iterative_method.html": "a841ea26"
   }
 }
