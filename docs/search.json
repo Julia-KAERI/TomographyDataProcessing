@@ -14,7 +14,7 @@
     "href": "intro.html",
     "title": "1  Introduction",
     "section": "",
-    "text": "This is a book created from markdown and executable code.",
+    "text": "1.1 참고 목록",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -237,6 +237,26 @@
     "text": "그림 1: 대수적인 reconstruction\n\n\n\n\n\n\n\n\n\n\n\n\n\n1.1 ART (Algebraic reconstruction technique)\n\\[\n\\boldsymbol{x}^{(k+1)} = \\boldsymbol{x}^{(k)} + \\lambda_m \\dfrac{1}{\\boldsymbol{A}_{1:}^T \\boldsymbol{A}_{1:}} (\\boldsymbol{b}_i - \\boldsymbol{A}_{i:}\\boldsymbol{x}^{(k)}) \\boldsymbol{A}_{i:}\n\\]\nㅋ \n\n\n1.2 SART (Simultaneous ART)\n\\[\n\\boldsymbol{x}^{(k+1)} = \\boldsymbol{x}^{(k)} + \\lambda_m \\boldsymbol{V}^{-1} \\boldsymbol{A}^T \\boldsymbol{W} (\\boldsymbol{b}-\\boldsymbol{Ax}^{(k)})\n\\]\n이 때 \\(\\boldsymbol{V}\\) 와 \\(\\boldsymbol{W}\\) 는 대각행렬로 각각의 대각성분은 다음과 같다.\n\\[\n\\boldsymbol{V}_{jj} = \\sum_{i=1}^M |\\boldsymbol{A}_{ij}|, \\qquad \\boldsymbol{W}_{ii} = \\dfrac{1}{\\sum_{j=1}^N |\\boldsymbol{A}_{ij}|}\n\\]",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>반복법을 통한 Reconstruction</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#참고-목록",
+    "href": "intro.html#참고-목록",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "Münch, Beat, Pavel Trtik, Federica Marone, and Marco Stampanoni. 2009.\n“Stripe and Ring Artifact Removal with Combined Wavelet — Fourier\nFiltering.” Opt. Express 17 (10): 8567–91. https://doi.org/10.1364/OE.17.008567.\n\n\nRaven, Carsten. 1998. “Numerical Removal of Ring Artifacts in\nMicrotomography.” Review of Scientific Instruments 69:\n2978–80. https://api.semanticscholar.org/CorpusID:53389111.\n\n\nRivers, Mark. 1988. “Tutorial Introduction to x-Ray Computed\nMicrotomography Data Processing.” https://www.mcs.anl.gov/research/projects/X-ray-cmt/rivers/tutorial.html.\n\n\nTitarenko, Sofya, Philip J. Withers, and Anatoly Yagola. 2010. “An\nAnalytical Formula for Ring Artefact Suppression in x-Ray\nTomography.” Applied Mathematics Letters 23 (12):\n1489–95. https://doi.org/https://doi.org/10.1016/j.aml.2010.08.022.\n\n\nVo, Nghia T., Robert C. Atwood, and Michael Drakopoulos. 2018.\n“Superior Techniques for Eliminating Ring Artifacts in x-Ray\nMicro-Tomography.” Opt. Express 26 (22): 28396–412. https://doi.org/10.1364/OE.26.028396.\n\n\nVo, Nghia T., Michael Drakopoulos, Robert C. Atwood, and Christina\nReinhard. 2014. “Reliable Method for Calculating the Center of\nRotation in Parallel-Beam Tomography.” Opt. Express 22\n(16): 19078–86. https://doi.org/10.1364/OE.22.019078.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#tomography-package",
+    "href": "intro.html#tomography-package",
+    "title": "1  Introduction",
+    "section": "1.2 Tomography package",
+    "text": "1.2 Tomography package\n\n1.2.1 Python based\n\nalgotom, https://github.com/algotom\n\nhttps://algotom.github.io : algotom 문서 사이트\nhttps://sarepy.readthedocs.io : altotom 저자중 한사람인 Nghia T. Vo 의 ring artifact removeal 에 대한 설명 사이트\n\ntomopy, https://github.com/tomopy/tomopy\n\nhttps://tomopy.readthedocs.io/en/stable/",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
   }
 ]

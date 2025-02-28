@@ -20,7 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -55,16 +74,16 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "일치 없음",
+    "search-matching-documents-text": "일치된 문서",
+    "search-copy-link-title": "검색 링크 복사",
+    "search-hide-matches-text": "추가 검색 결과 숨기기",
+    "search-more-match-text": "추가 검색결과",
+    "search-more-matches-text": "추가 검색결과",
+    "search-clear-button-title": "제거",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
+    "search-detached-cancel-button-title": "취소",
+    "search-submit-button-title": "검색",
     "search-label": "Search"
   }
 }</script>
@@ -78,11 +97,11 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -121,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./src/theory.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">토모그래피</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">토모그래피와 Filtered Back Projection</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -144,8 +163,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./src/iterative_method.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">반복법을 통한 Reconstruction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -160,7 +185,17 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">목차</h2>
+   
+  <ul>
+  <li><a href="#참고-목록" id="toc-참고-목록" class="nav-link active" data-scroll-target="#참고-목록"><span class="header-section-number">1.1</span> 참고 목록</a></li>
+  <li><a href="#tomography-package" id="toc-tomography-package" class="nav-link" data-scroll-target="#tomography-package"><span class="header-section-number">1.2</span> Tomography package</a>
+  <ul class="collapse">
+  <li><a href="#python-based" id="toc-python-based" class="nav-link" data-scroll-target="#python-based"><span class="header-section-number">1.2.1</span> Python based</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -184,9 +219,62 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a book created from markdown and executable code.</p>
+<section id="참고-목록" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="참고-목록"><span class="header-section-number">1.1</span> 참고 목록</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Munch2009" class="csl-entry" role="listitem">
+Münch, Beat, Pavel Trtik, Federica Marone, and Marco Stampanoni. 2009.
+<span>“Stripe and Ring Artifact Removal with Combined Wavelet — Fourier
+Filtering.”</span> <em>Opt. Express</em> 17 (10): 8567–91. <a href="https://doi.org/10.1364/OE.17.008567">https://doi.org/10.1364/OE.17.008567</a>.
+</div>
+<div id="ref-Raven1998" class="csl-entry" role="listitem">
+Raven, Carsten. 1998. <span>“Numerical Removal of Ring Artifacts in
+Microtomography.”</span> <em>Review of Scientific Instruments</em> 69:
+2978–80. <a href="https://api.semanticscholar.org/CorpusID:53389111">https://api.semanticscholar.org/CorpusID:53389111</a>.
+</div>
+<div id="ref-River1988" class="csl-entry" role="listitem">
+Rivers, Mark. 1988. <span>“Tutorial Introduction to x-Ray Computed
+Microtomography Data Processing.”</span> <a href="https://www.mcs.anl.gov/research/projects/X-ray-cmt/rivers/tutorial.html">https://www.mcs.anl.gov/research/projects/X-ray-cmt/rivers/tutorial.html</a>.
+</div>
+<div id="ref-TITARENKO20101489" class="csl-entry" role="listitem">
+Titarenko, Sofya, Philip J. Withers, and Anatoly Yagola. 2010. <span>“An
+Analytical Formula for Ring Artefact Suppression in x-Ray
+Tomography.”</span> <em>Applied Mathematics Letters</em> 23 (12):
+1489–95. https://doi.org/<a href="https://doi.org/10.1016/j.aml.2010.08.022">https://doi.org/10.1016/j.aml.2010.08.022</a>.
+</div>
+<div id="ref-Vo2018" class="csl-entry" role="listitem">
+Vo, Nghia T., Robert C. Atwood, and Michael Drakopoulos. 2018.
+<span>“Superior Techniques for Eliminating Ring Artifacts in x-Ray
+Micro-Tomography.”</span> <em>Opt. Express</em> 26 (22): 28396–412. <a href="https://doi.org/10.1364/OE.26.028396">https://doi.org/10.1364/OE.26.028396</a>.
+</div>
+<div id="ref-Vo2014" class="csl-entry" role="listitem">
+Vo, Nghia T., Michael Drakopoulos, Robert C. Atwood, and Christina
+Reinhard. 2014. <span>“Reliable Method for Calculating the Center of
+Rotation in Parallel-Beam Tomography.”</span> <em>Opt. Express</em> 22
+(16): 19078–86. <a href="https://doi.org/10.1364/OE.22.019078">https://doi.org/10.1364/OE.22.019078</a>.
+</div>
+</div>
+<p><br></p>
+</section>
+<section id="tomography-package" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="tomography-package"><span class="header-section-number">1.2</span> Tomography package</h2>
+<section id="python-based" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="python-based"><span class="header-section-number">1.2.1</span> Python based</h3>
+<ul>
+<li>algotom, <a href="https://github.com/algotom">https://github.com/algotom</a>
+<ul>
+<li><a href="https://algotom.github.io">https://algotom.github.io</a> : algotom 문서 사이트</li>
+<li><a href="https://sarepy.readthedocs.io">https://sarepy.readthedocs.io</a> : altotom 저자중 한사람인 Nghia T. Vo 의 ring artifact removeal 에 대한 설명 사이트</li>
+</ul></li>
+<li>tomopy, <a href="https://github.com/tomopy/tomopy">https://github.com/tomopy/tomopy</a>
+<ul>
+<li><a href="https://tomopy.readthedocs.io/en/stable/">https://tomopy.readthedocs.io/en/stable/</a></li>
+</ul></li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -243,12 +331,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "복사완료!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "복사완료!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -605,8 +693,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./src/theory.html" class="pagination-link" aria-label="토모그래피">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">토모그래피</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./src/theory.html" class="pagination-link" aria-label="토모그래피와 Filtered Back Projection">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">토모그래피와 Filtered Back Projection</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

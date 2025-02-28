@@ -1,5 +1,26 @@
 # Introduction
 
-This is a book created from markdown and executable code.
+
+
+## 참고 목록
+
+::: {#refs}
+
+:::
+
+</br>
+
+## Tomography package
+
+### Python based
+
+
+- algotom, [https://github.com/algotom](https://github.com/algotom) 
+  - [https://algotom.github.io](https://algotom.github.io)  : algotom 문서 사이트
+  - [https://sarepy.readthedocs.io](https://sarepy.readthedocs.io) : altotom 저자중 한사람인 Nghia T. Vo 의 ring artifact removeal 에 대한 설명 사이트
+- tomopy, [https://github.com/tomopy/tomopy](https://github.com/tomopy/tomopy)
+  - [https://tomopy.readthedocs.io/en/stable/](https://tomopy.readthedocs.io/en/stable/)
+
+
 
 

@@ -7,7 +7,15 @@ crossref:
 ---
 
 
+1. https://sarepy.readthedocs.io/toc/section3_1/section3_1_1.html
+
+2. 
+
+
 ## @Raven1998
+
+
+
 
 사이노그램 $S[\theta,\,x]$ 에 대해 푸리에 변환
 
